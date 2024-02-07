@@ -33,7 +33,8 @@ public class AsteroidSpawner : MonoBehaviour {
 				ogSpawnLoc.y + Random.Range(-ySpawnRange, ySpawnRange)
 				);
 			
-			Instantiate(asteriod, spawnPos, quaternion.identity);
+			GameObject a = Instantiate(asteriod, spawnPos, quaternion.identity);
+			a.GetComponent<Asteroid>().Init(1f, 0.2f, 3);
 			
 			numAsteroids--;
 			Invoke(nameof(SpawnAsteroids), asteroidInterval);

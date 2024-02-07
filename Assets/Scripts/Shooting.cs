@@ -8,7 +8,7 @@ public class Shooting : MonoBehaviour {
     [SerializeField] private GameObject bulletPrefab;
 
     //these consts are attributes that should be able to be changed with player upgrades
-    private const float RATE_OF_FIRE = 1f; 
+    private const float RATE_OF_FIRE = 0.5f; 
 
     private bool shoot;
     private float lastShotTime;
