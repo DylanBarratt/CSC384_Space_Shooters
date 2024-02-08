@@ -23,7 +23,7 @@ public class Asteroid : MonoBehaviour {
     private void OnCollisionEnter2D(Collision2D collision) {
         switch(collision.gameObject.tag) {
             case "Boundary":
-                Despawn();
+                KillAsteroid();
                 break;
             case "Bullet":
                 Damage();
@@ -32,7 +32,8 @@ public class Asteroid : MonoBehaviour {
         
     }
 
-    private void Despawn() {
+    //could take a parameter to know what kills it?
+    public void KillAsteroid() {
         Destroy(gameObject);
     }
 
@@ -40,7 +41,7 @@ public class Asteroid : MonoBehaviour {
         health--;
         
         if (health <= 0) {
-            Despawn();
+            KillAsteroid();
         }
     }
 
