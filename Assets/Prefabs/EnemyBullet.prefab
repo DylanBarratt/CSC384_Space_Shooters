@@ -12,10 +12,10 @@ GameObject:
   - component: {fileID: 2641965313589391030}
   - component: {fileID: 7145741422000462617}
   - component: {fileID: 6833590714774740094}
-  - component: {fileID: 4918210977232627220}
+  - component: {fileID: 8244742900567063760}
   m_Layer: 0
-  m_Name: bullet
-  m_TagString: Bullet
+  m_Name: EnemyBullet
+  m_TagString: EnemyBullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -28,13 +28,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8654673310026028745}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.04, y: -2.27, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 1, w: 0}
+  m_LocalPosition: {x: -0.04, y: 2.37, z: 0}
   m_LocalScale: {x: 1.1861694, y: 1.1861694, z: 1.1861694}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
 --- !u!212 &2641965313589391030
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -159,7 +159,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &4918210977232627220
+--- !u!114 &8244742900567063760
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -168,6 +168,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 8654673310026028745}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 117cbd07f55749620abdbf03c2443e57, type: 3}
+  m_Script: {fileID: 11500000, guid: 53a7f941f8f505d3ab8d86f4218582a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

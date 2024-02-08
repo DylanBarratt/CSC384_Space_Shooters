@@ -21,12 +21,17 @@ public class Asteroid : MonoBehaviour {
     }
 
     private void OnTriggerEnter2D(Collider2D collision) {
+        
         switch(collision.gameObject.tag) {
             case "Bullet":
                 Damage();
                 break;
             case "Boundary":
-                Invoke(nameof(KillAsteroid), 2f);
+                if (collision.gameObject.name.Equals("UpperBoundary")) { //TODO: jank? xd
+                    break;
+                }
+                
+                Invoke(nameof(KillAsteroid), 2f); 
                 break;
             case "Enemy":
                 KillAsteroid();

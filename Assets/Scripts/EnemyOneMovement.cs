@@ -5,7 +5,7 @@ using UnityEngine;
 using Random = UnityEngine.Random;
 using Screen = UnityEngine.Device.Screen;
 
-public class EnemyOne : MonoBehaviour {
+public class EnemyOneMovement : MonoBehaviour {
 	private float speed;
 	private Rigidbody2D rb;
 
@@ -32,6 +32,8 @@ public class EnemyOne : MonoBehaviour {
 	private void YPosCheck() {
 		if (rb.position.y <= targetY) {
 			rb.velocity = Vector2.zero;
+			
+			gameObject.SendMessage("ShootStart", 1f);
 			
 			XPatrolInit();
 			

@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Shooting : MonoBehaviour {
+public class PlayerShooting : MonoBehaviour {
     [SerializeField] private Transform gunLoc;
     [SerializeField] private GameObject bulletPrefab;
 

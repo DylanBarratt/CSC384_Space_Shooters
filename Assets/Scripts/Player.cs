@@ -11,9 +11,16 @@ public class Player : MonoBehaviour {
 	}
 
 	private void OnTriggerEnter2D(Collider2D collision) {
-		if (collision.gameObject.CompareTag("Asteroid")) {
-			collision.gameObject.GetComponent<Asteroid>().KillAsteroid();
-			DamagePlayer(1);
+		Debug.Log("player: " + collision.gameObject.tag);
+
+		switch (collision.gameObject.tag) {
+			case "Asteroid":
+				collision.gameObject.GetComponent<Asteroid>().KillAsteroid();
+				DamagePlayer(1);
+				break;
+			case "EnemyBullet":
+				DamagePlayer(1);
+				break;
 		}
 	}
 
