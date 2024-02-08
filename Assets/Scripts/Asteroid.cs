@@ -20,16 +20,18 @@ public class Asteroid : MonoBehaviour {
         rb = GetComponent<Rigidbody2D>();
     }
 
-    private void OnCollisionEnter2D(Collision2D collision) {
+    private void OnTriggerEnter2D(Collider2D collision) {
         switch(collision.gameObject.tag) {
-            case "Boundary":
-                KillAsteroid();
-                break;
             case "Bullet":
                 Damage();
                 break;
+            case "Boundary":
+                Invoke(nameof(KillAsteroid), 2f);
+                break;
+            case "Enemy":
+                KillAsteroid();
+                break;
         }
-        
     }
 
     //could take a parameter to know what kills it?

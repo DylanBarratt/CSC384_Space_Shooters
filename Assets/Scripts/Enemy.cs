@@ -17,10 +17,15 @@ public class Enemy : MonoBehaviour {
 	private void Start() {
 		Init(3, 2); //should be called when enemy is instantiated not here
 	}
-
-	private void OnCollisionEnter2D(Collision2D collision) {
-		if (collision.gameObject.CompareTag("Bullet")) {
-			Damage(1);
+	
+	private void OnTriggerEnter2D(Collider2D collision) {
+		switch (collision.gameObject.tag) {
+			case "Bullet":
+				Damage(1);
+				break;
+			case "Asteroid":
+				Damage(1);
+				break;
 		}
 	}
 
