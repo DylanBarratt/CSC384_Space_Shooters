@@ -6,8 +6,7 @@ using Random = UnityEngine.Random;
 
 public class AsteroidSpawner : MonoBehaviour {
 	[SerializeField] private GameObject asteriod;
-
-	private int numAsteroids;
+	
 	private int asteroidInterval;
 
 	private Vector2 ogSpawnLoc;
@@ -15,8 +14,7 @@ public class AsteroidSpawner : MonoBehaviour {
 	private float xSpawnRange;
 
 	private void Start() {
-		numAsteroids = 10;
-		asteroidInterval = 3;
+		asteroidInterval = 5;
 
 		ogSpawnLoc = gameObject.transform.position;
 		
@@ -27,18 +25,15 @@ public class AsteroidSpawner : MonoBehaviour {
 	}
 
 	private void SpawnAsteroids() {
-		if (numAsteroids > 0) {
-			Vector2 spawnPos = new Vector2(
-				ogSpawnLoc.x + Random.Range(-xSpawnRange, xSpawnRange), 
-				ogSpawnLoc.y + Random.Range(-ySpawnRange, ySpawnRange)
-				);
-			
-			GameObject a = Instantiate(asteriod, spawnPos, quaternion.identity);
-			a.GetComponent<Asteroid>().Init(1f, 0.2f, 3);
-			
-			numAsteroids--;
-			Invoke(nameof(SpawnAsteroids), asteroidInterval);
-		}
+		Vector2 spawnPos = new Vector2(
+			ogSpawnLoc.x + Random.Range(-xSpawnRange, xSpawnRange), 
+			ogSpawnLoc.y + Random.Range(-ySpawnRange, ySpawnRange)
+			);
+		
+		GameObject a = Instantiate(asteriod, spawnPos, quaternion.identity);
+		a.GetComponent<Asteroid>().Init(1f, 0.2f, 3);
+		
+		Invoke(nameof(SpawnAsteroids), asteroidInterval);
 	}
 
 	//FOR TESTING ONLY!!
