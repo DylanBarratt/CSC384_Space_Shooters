@@ -20,11 +20,14 @@ public class Enemy : MonoBehaviour {
 	
 	private void OnTriggerEnter2D(Collider2D collision) {
 		switch (collision.gameObject.tag) {
-			case "Bullet":
-				Damage(1);
-				break;
 			case "Asteroid":
 				Damage(1);
+				break;
+			case "PlayerBullet":
+				Damage(1);
+				break;
+			case "Player":
+				KillEnemy();
 				break;
 		}
 	}

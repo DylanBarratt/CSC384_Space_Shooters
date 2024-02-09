@@ -18,6 +18,7 @@ public class EnemyOneMovement : MonoBehaviour {
 		speed = s;
 		
 		rb = GetComponent<Rigidbody2D>();
+		
 		moveDelay = 0.2f;
 		MoveToYPosition();
 	}

@@ -706,7 +706,7 @@ GameObject:
   - component: {fileID: 1780167210}
   m_Layer: 0
   m_Name: UpperBoundary
-  m_TagString: Boundary
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -771,63 +771,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 40.10637, y: 2.8290372}
   m_EdgeRadius: 0
---- !u!1001 &1898392593
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 1747470178826389851, guid: 57221826ceb229297ae4452fb7abf523, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -0.04
-      objectReference: {fileID: 0}
-    - target: {fileID: 1747470178826389851, guid: 57221826ceb229297ae4452fb7abf523, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 2.37
-      objectReference: {fileID: 0}
-    - target: {fileID: 1747470178826389851, guid: 57221826ceb229297ae4452fb7abf523, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1747470178826389851, guid: 57221826ceb229297ae4452fb7abf523, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1747470178826389851, guid: 57221826ceb229297ae4452fb7abf523, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1747470178826389851, guid: 57221826ceb229297ae4452fb7abf523, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1747470178826389851, guid: 57221826ceb229297ae4452fb7abf523, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1747470178826389851, guid: 57221826ceb229297ae4452fb7abf523, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1747470178826389851, guid: 57221826ceb229297ae4452fb7abf523, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1747470178826389851, guid: 57221826ceb229297ae4452fb7abf523, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 180
-      objectReference: {fileID: 0}
-    - target: {fileID: 8654673310026028745, guid: 57221826ceb229297ae4452fb7abf523, type: 3}
-      propertyPath: m_Name
-      value: EnemyBullet
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 57221826ceb229297ae4452fb7abf523, type: 3}
 --- !u!1 &2036370323
 GameObject:
   m_ObjectHideFlags: 0
@@ -970,4 +913,3 @@ SceneRoots:
   - {fileID: 7688815807655652118}
   - {fileID: 369334818}
   - {fileID: 1276353088}
-  - {fileID: 1898392593}

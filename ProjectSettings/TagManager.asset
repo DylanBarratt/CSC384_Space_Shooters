@@ -4,11 +4,11 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Bullet
   - Boundary
   - Asteroid
   - Enemy
   - EnemyBullet
+  - PlayerBullet
   layers:
   - Default
   - TransparentFX
