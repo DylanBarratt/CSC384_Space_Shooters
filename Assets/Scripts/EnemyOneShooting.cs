@@ -14,7 +14,13 @@ public class EnemyOneShooting : MonoBehaviour {
 	}
 
 	private void Shoot() {
-		Instantiate(bulletPrefab, gunLoc.position, Quaternion.identity);
+		Vector2 gunLocPosition = gunLoc.position;
+		float bulletOffset = 0.25f;
+		Vector2 lSpawn = new Vector2(gunLocPosition.x - bulletOffset, gunLocPosition.y);
+		Vector2 rSpawn = new Vector2(gunLocPosition.x + bulletOffset, gunLocPosition.y);
+		
+		Instantiate(bulletPrefab, lSpawn, Quaternion.identity);
+		Instantiate(bulletPrefab, rSpawn, Quaternion.identity);
 		Invoke(nameof(Shoot), rateOfFire);
 	}
 }

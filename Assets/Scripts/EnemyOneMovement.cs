@@ -34,7 +34,7 @@ public class EnemyOneMovement : MonoBehaviour {
 		if (rb.position.y <= targetY) {
 			rb.velocity = Vector2.zero;
 			
-			gameObject.SendMessage("ShootStart", 1f);
+			gameObject.SendMessage("ShootStart", 2f);
 			
 			XPatrolInit();
 			
