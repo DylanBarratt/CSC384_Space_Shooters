@@ -29,6 +29,9 @@ public class Bullet : MonoBehaviour {
 			case "Boundary":
 				Destroy(gameObject);
 				break;
+			case "UBoundary":
+				Destroy(gameObject);
+				break;
 		}
 	}
 }
