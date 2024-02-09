@@ -9,7 +9,7 @@ public class PlayerMovement : MonoBehaviour {
     private float horizontal;
     private float vertical;
 
-    private const float SPEED = 10.0f;
+    private const float SPEED = 7.0f;
     private const float MOVE_LIMITER = 0.7f;
 
     void Start() {

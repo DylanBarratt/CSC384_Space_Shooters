@@ -41,7 +41,8 @@ public class EnemySpawner : MonoBehaviour {
 				
 				GameObject e = Instantiate(enemies[i], spawnLoc.position, enemies[i].transform.rotation);
 				
-				float[] eVals = {2, 3};
+				//health, speed
+				float[] eVals = {2, 1};
 				e.SendMessage("Init", eVals);
 				
 				numEnemies[i]--;
@@ -57,9 +58,9 @@ public class EnemySpawner : MonoBehaviour {
 				Invoke(nameof(Spawn), frequency);
 				return;
 			}
-			
-			Debug.Log("All enemies spawned yo");
 		}
+		
+		Debug.Log("All enemies spawned yo");
 	}
 
 	private Transform RandomFromList(List<Transform> list) {

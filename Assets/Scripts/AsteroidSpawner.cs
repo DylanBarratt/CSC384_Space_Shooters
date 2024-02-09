@@ -9,26 +9,28 @@ public class AsteroidSpawner : MonoBehaviour {
 	
 	private int asteroidInterval;
 
-	private Vector2 ogSpawnLoc;
-	private float ySpawnRange;
-	private float xSpawnRange;
+	private float xPos = 0f;
+	private float yPos = 7f;
+	private float ySpawnRange = 1.5f;
+	private float xSpawnRange = 2.3f;
+	private int screenWidth = 720;
+
 
 	private void Start() {
 		asteroidInterval = 5;
 
-		ogSpawnLoc = gameObject.transform.position;
+		xSpawnRange = Camera.main.ScreenToWorldPoint(new Vector2(screenWidth, 0)).x;
 		
-		ySpawnRange = 5f;
-		xSpawnRange = Camera.main.ScreenToWorldPoint(new Vector2(Screen.width, 0)).x;
-		
-		Invoke(nameof(SpawnAsteroids), asteroidInterval);
+		SpawnAsteroids();
 	}
 
 	private void SpawnAsteroids() {
 		Vector2 spawnPos = new Vector2(
-			ogSpawnLoc.x + Random.Range(-xSpawnRange, xSpawnRange), 
-			ogSpawnLoc.y + Random.Range(-ySpawnRange, ySpawnRange)
+			0 + Random.Range(-xSpawnRange, xSpawnRange), 
+			yPos + Random.Range(-ySpawnRange, ySpawnRange)
 			);
+		
+		Debug.Log(spawnPos);
 		
 		GameObject a = Instantiate(asteriod, spawnPos, quaternion.identity);
 		a.GetComponent<Asteroid>().Init(1f, 0.2f, 3);
@@ -38,13 +40,11 @@ public class AsteroidSpawner : MonoBehaviour {
 
 	//FOR TESTING ONLY!!
 	private void ShowBounds() {
-		Instantiate(asteriod, ogSpawnLoc, quaternion.identity); //mid
+		Instantiate(asteriod, new Vector2(xPos - xSpawnRange, yPos + ySpawnRange), quaternion.identity); //Left Top
+		Instantiate(asteriod, new Vector2(xPos - xSpawnRange, yPos - ySpawnRange), quaternion.identity); //Left Bot
 		
-		Instantiate(asteriod, new Vector2(ogSpawnLoc.x - xSpawnRange, ogSpawnLoc.y + ySpawnRange), quaternion.identity); //Left Top
-		Instantiate(asteriod, new Vector2(ogSpawnLoc.x - xSpawnRange, ogSpawnLoc.y - ySpawnRange), quaternion.identity); //Left Bot
-		
-		Instantiate(asteriod, new Vector2(ogSpawnLoc.x + xSpawnRange, ogSpawnLoc.y + ySpawnRange), quaternion.identity); //Right Top
-		Instantiate(asteriod, new Vector2(ogSpawnLoc.x + xSpawnRange, ogSpawnLoc.y - ySpawnRange), quaternion.identity); //Right Bot
-
+		Instantiate(asteriod, new Vector2(xPos + xSpawnRange, yPos + ySpawnRange), quaternion.identity); //Right Top
+		Instantiate(asteriod, new Vector2(xPos + xSpawnRange, yPos - ySpawnRange), quaternion.identity); //Right Bot
+		Debug.Break();	
 	}
 }
