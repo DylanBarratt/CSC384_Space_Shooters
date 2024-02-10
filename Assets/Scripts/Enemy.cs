@@ -4,10 +4,17 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour {
+	private GameObject enemySpawner;
+	
 	private float health;
 	private float speed;
 
 	public void Init(float[] vals) {
+		enemySpawner = GameObject.Find("GameManager/EnemySpawner");
+		if (enemySpawner == null) {
+			Debug.LogError("enemyspawner not found?");
+		}
+			
 		health = vals[0];
 		speed = vals[1];
 		
@@ -38,5 +45,9 @@ public class Enemy : MonoBehaviour {
 
 	private void KillEnemy() {
 		Destroy(gameObject);
+
+		if (enemySpawner != null) {
+			enemySpawner.SendMessage("EnemyDestroyed");
+		}
 	}
 }

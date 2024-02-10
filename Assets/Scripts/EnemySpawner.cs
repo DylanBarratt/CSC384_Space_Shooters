@@ -11,6 +11,8 @@ public class EnemySpawner : MonoBehaviour {
 	
 	private int[] numEnemies = new int[4];
 	private int frequency;
+	private int enemiesSpawned;
+	private int maxEnemies;
 
 	private Transform lastSpawnLoc;
 
@@ -26,11 +28,19 @@ public class EnemySpawner : MonoBehaviour {
 		
 		frequency = enemyData[4];
 		lastSpawnLoc = spawnPoints[0];
+		enemiesSpawned = 0;
+		maxEnemies = 3;
 		Invoke(nameof(Spawn), frequency);
 	}
 
+	public void EnemyDestroyed() {
+		enemiesSpawned--;
+	}
+
 	private void Spawn() {
-		
+		if (enemiesSpawned >= maxEnemies) {
+			return;
+		}
 		
 		for (int i = 0; i < numEnemies.Length; i++) {
 			if (numEnemies[i] > 0) {
@@ -40,6 +50,7 @@ public class EnemySpawner : MonoBehaviour {
 				lastSpawnLoc = spawnLoc;
 				
 				GameObject e = Instantiate(enemies[i], spawnLoc.position, enemies[i].transform.rotation);
+				enemiesSpawned++;
 				
 				//health, speed
 				float[] eVals = {2, 1};

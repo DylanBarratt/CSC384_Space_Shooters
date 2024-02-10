@@ -26,7 +26,7 @@ public class EnemyOneMovement : MonoBehaviour {
 	private void MoveToYPosition() {
 		float screenTop = Camera.main.ScreenToWorldPoint(new Vector2(0, Screen.height)).y;
 		targetY = Random.Range(1f, screenTop - 1f);
-		rb.velocity = new Vector2(0, -speed);
+		rb.velocity = new Vector2(0, -(speed * 1.5f));
 		Invoke(nameof(YPosCheck), moveDelay);
 	}
 
