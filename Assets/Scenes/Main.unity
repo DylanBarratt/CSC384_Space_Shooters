@@ -223,7 +223,7 @@ GameObject:
   - component: {fileID: 456561019}
   m_Layer: 0
   m_Name: LeftBoundary
-  m_TagString: Boundary
+  m_TagString: SBoundary
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -377,7 +377,7 @@ GameObject:
   - component: {fileID: 706440080}
   m_Layer: 0
   m_Name: RightBoundary
-  m_TagString: Boundary
+  m_TagString: SBoundary
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
