@@ -7,12 +7,10 @@ public class Asteroid : MonoBehaviour {
     private Rigidbody2D rb;
     
     private float fallingSpeed; //speed that the asteroid starts falling at
-    private float rateOfFalling; //rate the asteroid increases speed
     private int health; //number of hits that can be sustained
 
-    public void Init(float fs, float ros, int h) {
+    public void Init(float fs, int h) {
         fallingSpeed = fs;
-        rateOfFalling = ros;
         health = h;
     }
 
@@ -48,7 +46,7 @@ public class Asteroid : MonoBehaviour {
     }
 
     private void FixedUpdate() {
-        fallingSpeed += rateOfFalling * Time.deltaTime;
+        fallingSpeed += Time.deltaTime;
         rb.velocity = Vector2.down * fallingSpeed;
     }
 }

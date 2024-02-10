@@ -31,7 +31,7 @@ public class AsteroidSpawner : MonoBehaviour {
 			);
 		
 		GameObject a = Instantiate(asteriod, spawnPos, quaternion.identity);
-		a.GetComponent<Asteroid>().Init(1f, 0.2f, 3);
+		a.GetComponent<Asteroid>().Init(1f, 3);
 		
 		Invoke(nameof(SpawnAsteroids), asteroidInterval);
 	}
