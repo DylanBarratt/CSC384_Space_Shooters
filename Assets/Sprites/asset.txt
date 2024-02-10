@@ -1,0 +1,2 @@
+Sprites are created on a 32x32px canvas
+Imported at 64px per unit so drawings are half size

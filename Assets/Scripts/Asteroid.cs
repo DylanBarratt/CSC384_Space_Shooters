@@ -25,9 +25,6 @@ public class Asteroid : MonoBehaviour {
             case "PlayerBullet":
                 Damage();
                 break;
-            case "Enemy":
-                KillAsteroid();
-                break;
             case "Player":
                 KillAsteroid();
                 break;

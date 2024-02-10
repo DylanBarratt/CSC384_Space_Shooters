@@ -7,7 +7,7 @@ using UnityEngine;
 public class PlayerBullet : MonoBehaviour {
     private void OnTriggerEnter2D(Collider2D coll) {
         if (coll.gameObject.CompareTag("Enemy")) {
-            Destroy(gameObject);
+            gameObject.SendMessage("DestroyBullet");
         }
     }
 }

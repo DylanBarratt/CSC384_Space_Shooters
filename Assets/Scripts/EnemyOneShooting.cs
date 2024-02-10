@@ -15,7 +15,7 @@ public class EnemyOneShooting : MonoBehaviour {
 
 	private void Shoot() {
 		Vector2 gunLocPosition = gunLoc.position;
-		float bulletOffset = 0.25f;
+		float bulletOffset = 0.1f;
 		Vector2 lSpawn = new Vector2(gunLocPosition.x - bulletOffset, gunLocPosition.y);
 		Vector2 rSpawn = new Vector2(gunLocPosition.x + bulletOffset, gunLocPosition.y);
 		

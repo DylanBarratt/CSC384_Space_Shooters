@@ -65,7 +65,7 @@ public class EnemyOneMovement : MonoBehaviour {
 	}
 
 	private void OnCollisionEnter2D(Collision2D collision) {
-		if (collision.gameObject.CompareTag("Boundary")) {
+		if (collision.gameObject.CompareTag("SBoundary")) {
 			rb.velocity = Vector2.zero;
 			leftSideReached = !leftSideReached; //swap to other side
 			XPatrol();

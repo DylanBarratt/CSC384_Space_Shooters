@@ -5,7 +5,8 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour {
 	private float force;
-
+	private float destroyDelay = 2f;
+	
 	private Rigidbody2D rb;
 
 	private void Start() {
@@ -24,14 +25,18 @@ public class Bullet : MonoBehaviour {
 	private void OnTriggerEnter2D(Collider2D collision) {
 		switch (collision.gameObject.tag) {
 			case "Asteroid":
-				Destroy(gameObject);
+				DestroyBullet();
 				break;
 			case "Boundary":
-				Destroy(gameObject);
+				Invoke(nameof(DestroyBullet), destroyDelay);
 				break;
 			case "UBoundary":
-				Destroy(gameObject);
+				Invoke(nameof(DestroyBullet), destroyDelay);
 				break;
 		}
+	}
+
+	private void DestroyBullet() {
+		Destroy(gameObject);
 	}
 }
