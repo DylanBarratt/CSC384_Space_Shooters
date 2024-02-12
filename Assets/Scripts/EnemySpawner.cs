@@ -16,7 +16,7 @@ public class EnemySpawner : MonoBehaviour {
 
 	//health, speed, value
 	private float[,] enemyStats = {
-		{10, 1.5f, 1}, //e1
+		{4, 1.5f, 1}, //e1
 		{3, 1.5f, 1}, //e2
 		{3, 1.5f, 1}, //e3
 		{3, 1.5f, 1}, //e4

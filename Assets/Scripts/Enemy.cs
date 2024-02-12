@@ -28,7 +28,7 @@ public class Enemy : MonoBehaviour {
 
 	private void Damage(int amount) {
 		health -= amount;
-
+		
 		if (health <= 0) {
 			gameObject.SendMessage("KillEnemy");
 		}
