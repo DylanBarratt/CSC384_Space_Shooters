@@ -5,6 +5,7 @@ using UnityEngine;
 //script with help from: https://stuartspixelgames.com/2018/06/24/simple-2d-top-down-movement-unity-c/
 public class PlayerMovement : MonoBehaviour {
     private Rigidbody2D rb;
+    private Animator anime;
     
     private float horizontal;
     private float vertical;
@@ -14,11 +15,15 @@ public class PlayerMovement : MonoBehaviour {
 
     void Start() {
         rb = GetComponent<Rigidbody2D>();
+        anime = GetComponent<Animator>();
     }
 
     void Update() {
         horizontal = Input.GetAxisRaw("Horizontal");
-        vertical = Input.GetAxisRaw("Vertical"); 
+        vertical = Input.GetAxisRaw("Vertical");
+
+        anime.SetFloat("xVel", horizontal);
+        anime.SetFloat("yVel", vertical);
     }
 
     private void FixedUpdate() {
