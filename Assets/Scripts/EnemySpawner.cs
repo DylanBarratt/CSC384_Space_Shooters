@@ -14,19 +14,28 @@ public class EnemySpawner : MonoBehaviour {
 	private int enemiesSpawned;
 	private int maxEnemies;
 
+	//health, speed, value
+	private float[,] enemyStats = {
+		{10, 1.5f, 1}, //e1
+		{3, 1.5f, 1}, //e2
+		{3, 1.5f, 1}, //e3
+		{3, 1.5f, 1}, //e4
+	};
+
 	private Transform lastSpawnLoc;
 
-	public void EnemySpawnInit(int[] enemyData) {
-		if (enemyData.Length < 5) {
+	public void EnemySpawnInit(int[] spawnAmount) {
+		if (spawnAmount.Length < 5) {
 			Debug.LogError("Enemy spawn data too short...");
 		}
 		
-		numEnemies[0] = enemyData[0];
-		numEnemies[1] = enemyData[1];
-		numEnemies[2] = enemyData[2];
-		numEnemies[3] = enemyData[3];
+		numEnemies[0] = spawnAmount[0];
+		numEnemies[1] = spawnAmount[1];
+		numEnemies[2] = spawnAmount[2];
+		numEnemies[3] = spawnAmount[3];
 		
-		frequency = enemyData[4];
+		frequency = spawnAmount[4];
+		
 		lastSpawnLoc = spawnPoints[0];
 		enemiesSpawned = 0;
 		maxEnemies = 3;
@@ -52,9 +61,9 @@ public class EnemySpawner : MonoBehaviour {
 				GameObject e = Instantiate(enemies[i], spawnLoc.position, enemies[i].transform.rotation);
 				enemiesSpawned++;
 				
-				//health, speed
-				float[] eVals = {2, 1};
-				e.SendMessage("Init", eVals);
+				//health, speed, value
+				float[] eVals = {enemyStats[i, 0], enemyStats[i, 1], enemyStats[i, 2]};
+				e.SendMessage("EnemyInit", eVals);
 				
 				numEnemies[i]--;
 			}

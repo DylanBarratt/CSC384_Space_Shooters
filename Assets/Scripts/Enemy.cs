@@ -4,21 +4,15 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour {
-	private GameObject enemySpawner;
-	
-	private float health;
-	private float speed;
+	private float health, speed, value;
 
-	public void Init(float[] vals) {
-		enemySpawner = GameObject.Find("GameManager/EnemySpawner");
-		if (enemySpawner == null) {
-			Debug.LogError("enemyspawner not found?");
-		}
-			
+	public void EnemyInit(float[] vals) {
 		health = vals[0];
 		speed = vals[1];
+		value = vals[2];
 		
 		gameObject.SendMessage("Move", speed);
+		gameObject.SendMessage("SetValue", value);
 	}
 	
 	private void OnTriggerEnter2D(Collider2D collision) {
@@ -27,7 +21,7 @@ public class Enemy : MonoBehaviour {
 				Damage(1);
 				break;
 			case "Player":
-				KillEnemy();
+				gameObject.SendMessage("KillEnemy");
 				break;
 		}
 	}
@@ -36,15 +30,7 @@ public class Enemy : MonoBehaviour {
 		health -= amount;
 
 		if (health <= 0) {
-			KillEnemy();
-		}
-	}
-
-	private void KillEnemy() {
-		Destroy(gameObject);
-
-		if (enemySpawner != null) {
-			enemySpawner.SendMessage("EnemyDestroyed");
+			gameObject.SendMessage("KillEnemy");
 		}
 	}
 }
