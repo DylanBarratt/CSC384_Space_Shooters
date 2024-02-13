@@ -5,7 +5,9 @@ using UnityEngine;
 using UnityEngine.Serialization;
 
 public class Player : MonoBehaviour { 
+	private Animator anime;
 	private GameObject UIGameObject;
+	private PlayerMovement pl;
 
 	private int startingHealth;
 	private int health;
@@ -15,6 +17,8 @@ public class Player : MonoBehaviour {
 		health = startingHealth;
 
 		UIGameObject = GameObject.Find("GameManager/HUD_UI");
+		anime = GetComponent<Animator>();
+		pl = GetComponent<PlayerMovement>();
 	}
 
 	private void OnCollisionEnter2D(Collision2D collision) {
@@ -35,6 +39,7 @@ public class Player : MonoBehaviour {
 	}
 
 	private void DamagePlayer(int amount) {
+		anime.SetTrigger("Hit");
 		health -= amount;
 		
 		UIGameObject.SendMessage("UpdateHealth", (float) health / startingHealth * 100);
@@ -45,6 +50,9 @@ public class Player : MonoBehaviour {
 	}
 
 	private void KillPlayer() { //health 0 checking doesnt happen here so that a player can be killed regardless of health
-		Destroy(gameObject);
+		anime.SetTrigger("Ded");
+		pl.enabled = false;
+		//TODO: end game here as well
+		Destroy(gameObject, 1f);
 	}
 }

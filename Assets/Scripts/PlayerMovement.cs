@@ -19,6 +19,7 @@ public class PlayerMovement : MonoBehaviour {
     }
 
     void Update() {
+        
         horizontal = Input.GetAxisRaw("Horizontal");
         vertical = Input.GetAxisRaw("Vertical");
 
