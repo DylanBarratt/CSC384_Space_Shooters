@@ -17,6 +17,12 @@ public class Player : MonoBehaviour {
 		UIGameObject = GameObject.Find("GameManager/HUD_UI");
 	}
 
+	private void OnCollisionEnter2D(Collision2D collision) {
+		if (collision.gameObject.CompareTag("Enemy")) {
+			KillPlayer();
+		}
+	}
+
 	private void OnTriggerEnter2D(Collider2D collision) {
 		switch (collision.gameObject.tag) {
 			case "Asteroid":
@@ -24,9 +30,6 @@ public class Player : MonoBehaviour {
 				break;
 			case "EnemyBullet":
 				DamagePlayer(1);
-				break;
-			case "Enemy":
-				KillPlayer();
 				break;
 		}
 	}
