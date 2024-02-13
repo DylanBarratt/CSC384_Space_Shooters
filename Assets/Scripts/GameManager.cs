@@ -16,11 +16,9 @@ public class GameManager : MonoBehaviour {
         
         HUD.SendMessage("UpdateMonies", loopMonies);
     }
-    
 
     private void Start() {
         loopMonies = 0;
-        
         
         Invoke(nameof(startEnemySpawn), enemySpawnDelay);
     }

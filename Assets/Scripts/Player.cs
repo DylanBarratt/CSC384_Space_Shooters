@@ -2,12 +2,19 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
-public class Player : MonoBehaviour {
+public class Player : MonoBehaviour { 
+	private GameObject UIGameObject;
+
+	private int startingHealth;
 	private int health;
 
 	private void Start() {
-		health = 2;
+		startingHealth = 3;
+		health = startingHealth;
+
+		UIGameObject = GameObject.Find("GameManager/HUD_UI");
 	}
 
 	private void OnTriggerEnter2D(Collider2D collision) {
@@ -26,6 +33,8 @@ public class Player : MonoBehaviour {
 
 	private void DamagePlayer(int amount) {
 		health -= amount;
+		
+		UIGameObject.SendMessage("UpdateHealth", (float) health / startingHealth * 100);
 
 		if (health <= 0) {
 			KillPlayer();

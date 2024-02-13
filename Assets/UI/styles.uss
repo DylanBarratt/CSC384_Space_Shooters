@@ -1,0 +1,21 @@
+.health-bar {
+    
+}
+
+.unity-progress-bar__container {
+    min-height: 18px;
+    height: 18px;
+}
+
+.unity-progress-bar__background {
+    border-width: 0;
+    border-radius: 2px;
+    background-color: #444444;
+}
+
+.unity-progress-bar__progress {
+    margin: 0;
+    padding: 0;
+    border-radius: 2px;
+    background-color: #ffffff;
+}
