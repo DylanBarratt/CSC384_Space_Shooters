@@ -16,10 +16,10 @@ public class EnemySpawner : MonoBehaviour {
 
 	//health, speed, value
 	private float[,] enemyStats = {
-		{4, 1.5f, 1}, //e1
-		{3, 1.5f, 1}, //e2
-		{3, 1.5f, 1}, //e3
-		{3, 1.5f, 1}, //e4
+		{3, 1.5f, 1}, //e1
+		{5, 1f, 2}, //e2
+		{3, 1.5f, 3}, //e3
+		{3, 1.5f, 4}, //e4
 	};
 
 	private Transform lastSpawnLoc;
@@ -51,6 +51,7 @@ public class EnemySpawner : MonoBehaviour {
 			return;
 		}
 		
+		//TODO: maybe this could spawn enemies in a random order not 1->4
 		for (int i = 0; i < numEnemies.Length; i++) {
 			if (numEnemies[i] > 0) {
 				List<Transform> availableSpawnLocs = new List<Transform>(spawnPoints);

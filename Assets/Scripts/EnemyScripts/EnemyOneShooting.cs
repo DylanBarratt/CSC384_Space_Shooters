@@ -6,12 +6,7 @@ public class EnemyOneShooting : MonoBehaviour {
 	[SerializeField] private Transform gunLoc;
 	[SerializeField] private GameObject bulletPrefab;
 	
-	private float rateOfFire;
-	
-	public void ShootStart(float rof) {
-		rateOfFire = rof;
-		Shoot();
-	}
+	private float rateOfFire = 2f;
 
 	private void Shoot() {
 		Vector2 gunLocPosition = gunLoc.position;

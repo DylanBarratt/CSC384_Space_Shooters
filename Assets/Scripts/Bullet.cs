@@ -9,6 +9,10 @@ public class Bullet : MonoBehaviour {
 	
 	private Rigidbody2D rb;
 
+	private void SetScale(float scale) {
+		gameObject.transform.localScale = new Vector2(scale, scale);
+	}
+
 	private void Start() {
 		rb = GetComponent<Rigidbody2D>();
 		

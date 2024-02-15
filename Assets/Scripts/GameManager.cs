@@ -27,8 +27,8 @@ public class GameManager : MonoBehaviour {
     private void startEnemySpawn() {
         //TODO: this should be done level by level
         int[] enemySpawnAmnt = new int[5];
-        enemySpawnAmnt[0] = 10; //num enemy 1
-        enemySpawnAmnt[1] = 0; //num enemy 2
+        enemySpawnAmnt[0] = 0; //num enemy 1
+        enemySpawnAmnt[1] = 3; //num enemy 2
         enemySpawnAmnt[2] = 0; //num enemy 3
         enemySpawnAmnt[3] = 0; //num enemy 4
 		

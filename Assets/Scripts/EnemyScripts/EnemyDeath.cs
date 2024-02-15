@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyOneDeath : MonoBehaviour {
+public class EnemyDeath : MonoBehaviour {
 	private GameObject gameManager;
 	private GameObject enemySpawner;
 
