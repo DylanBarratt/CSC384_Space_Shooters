@@ -1,0 +1,21 @@
+.menu_btn {
+    background-color: rgba(188, 188, 188, 0);
+    -unity-font: url('project://database/Assets/Fonts/joystix%20monospace.otf?fileID=12800000&guid=71fe6155f52a3675da56486eb8ba47ab&type=3#joystix monospace');
+    -unity-font-definition: initial;
+    font-size: 32px;
+    margin-bottom: 24px;
+    margin-top: 24px;
+    color: rgb(255, 255, 255);
+    border-width: 0px;
+    border-radius: 5px;
+    padding: 1px;
+    transition-property: all;
+    transition-duration: 0s;
+    transition-timing-function: ease;
+    transition-delay: 0s;
+}
+
+.menu_btn:hover {
+    border-width: 1px;
+    padding: 0;
+}
