@@ -28,7 +28,7 @@ public class Asteroid : MonoBehaviour {
                 Damage();
                 break;
             case "Player":
-                KillAsteroid();
+                KillAsteroid(true);
                 break;
             case "Boundary":
                 Invoke(nameof(KillAsteroid), 2f); 
@@ -36,17 +36,22 @@ public class Asteroid : MonoBehaviour {
         }
     }
 
-    //TODO: could take a parameter to know what kills it?
     private void KillAsteroid() {
+        Destroy(gameObject);
+    }
+    
+    private void KillAsteroid(bool player) {
         Destroy(gameObject);
         gameManager.SendMessage("AddMonies", moniesValue);
     }
+
+    
 
     private void Damage() {
         health--;
         
         if (health <= 0) {
-            KillAsteroid();
+            KillAsteroid(true);
         }
     }
 
