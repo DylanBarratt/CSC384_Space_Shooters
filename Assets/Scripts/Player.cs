@@ -30,11 +30,12 @@ public class Player : MonoBehaviour {
 	private void DamagePlayer(int amount) {
 		anime.SetTrigger("Hit");
 		health -= amount;
-		
-		UIGameObject.SendMessage("UpdateHealth", (float) health / startingHealth * 100);
 
 		if (health <= 0) {
 			KillPlayer();
+		}
+		else {
+			UIGameObject.SendMessage("UpdateHealth", (float) health / startingHealth * 100);
 		}
 	}
 
