@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour {
     [SerializeField] private GameObject EnemySpawner;
@@ -33,5 +34,10 @@ public class GameManager : MonoBehaviour {
 		
         enemySpawnAmnt[4] = 4; //spawn delay
         EnemySpawner.SendMessage("EnemySpawnInit", enemySpawnAmnt);
+    }
+
+    private void EndGame() {
+        //TODO: maybe save stats here?
+        SceneManager.LoadScene("Menu");
     }
 }
