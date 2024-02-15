@@ -13,12 +13,12 @@ public class PlayerMovement : MonoBehaviour {
     private const float SPEED = 7.0f;
     private const float MOVE_LIMITER = 0.7f;
 
-    void Start() {
+    private void Start() {
         rb = GetComponent<Rigidbody2D>();
         anime = GetComponent<Animator>();
     }
 
-    void Update() {
+    private void Update() {
         
         horizontal = Input.GetAxisRaw("Horizontal");
         vertical = Input.GetAxisRaw("Vertical");
