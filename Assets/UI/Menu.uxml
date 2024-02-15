@@ -2,8 +2,9 @@
     <Style src="project://database/Assets/UI/menu_styles.uss?fileID=7433441132597879392&amp;guid=f96b17c77d2c1616e811b8855da7475d&amp;type=3#menu_styles" />
     <ui:Label tabindex="-1" text="SPACE SHOOTERS" parse-escape-sequences="true" display-tooltip-when-elided="true" style="background-color: rgba(56, 56, 56, 0); position: relative; top: 0; left: -2px; height: 349px; width: 708px; color: rgb(255, 255, 255); font-size: 48px; -unity-font: url(&apos;project://database/Assets/Fonts/joystix%20monospace.otf?fileID=12800000&amp;guid=71fe6155f52a3675da56486eb8ba47ab&amp;type=3#joystix monospace&apos;); -unity-font-definition: initial; -unity-text-align: lower-center; align-items: auto; justify-content: center;" />
     <ui:VisualElement name="btns" style="flex-grow: 1; padding-top: 150px; padding-right: 150px; padding-bottom: 150px; padding-left: 150px;">
-        <ui:Button text="Play!" parse-escape-sequences="true" display-tooltip-when-elided="true" class="menu_btn" />
-        <ui:Button text="Options?" parse-escape-sequences="true" display-tooltip-when-elided="true" class="menu_btn" />
-        <ui:Button text="EXIT." parse-escape-sequences="true" display-tooltip-when-elided="true" class="menu_btn" />
+        <ui:Button text="Play!" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Play" focusable="false" tabindex="-1" class="menu_btn" />
+        <ui:Button text="Options?" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Options" focusable="false" tabindex="-1" class="menu_btn" />
+        <ui:Button text="Stats$" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Stats" focusable="false" tabindex="-1" class="menu_btn" />
+        <ui:Button text="EXIT." parse-escape-sequences="true" display-tooltip-when-elided="true" name="Exit" focusable="false" tabindex="-1" class="menu_btn" />
     </ui:VisualElement>
 </ui:UXML>

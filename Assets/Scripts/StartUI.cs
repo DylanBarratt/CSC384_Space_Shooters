@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 
-public class MainMenu : MonoBehaviour {
+public class StartUI : MonoBehaviour {
 	private VisualElement root;
 	private Label continueText;
 

@@ -6,7 +6,7 @@ using UnityEngine.UI;
  
 public class BgScroller : MonoBehaviour { 
 	[SerializeField] private RawImage bgImg;
-	private float y = 0.1f;
+	[SerializeField] private float y = 0.1f;
  
 	void Update()
 	{
