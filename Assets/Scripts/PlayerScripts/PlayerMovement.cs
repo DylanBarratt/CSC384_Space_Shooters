@@ -19,7 +19,6 @@ public class PlayerMovement : MonoBehaviour {
     }
 
     private void Update() {
-        
         horizontal = Input.GetAxisRaw("Horizontal");
         vertical = Input.GetAxisRaw("Vertical");
 
@@ -29,8 +28,7 @@ public class PlayerMovement : MonoBehaviour {
 
     private void FixedUpdate() {
         //excessively slows controller movement :/
-        if (horizontal != 0 && vertical != 0) // Check for diagonal movement
-        {
+        if (horizontal != 0 && vertical != 0) { // Check for diagonal movement
             // limit movement speed diagonally, so you move at 70% speed
             horizontal *= MOVE_LIMITER;
             vertical *= MOVE_LIMITER;

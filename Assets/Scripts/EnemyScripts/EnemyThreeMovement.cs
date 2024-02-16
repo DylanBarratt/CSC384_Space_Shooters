@@ -9,11 +9,6 @@ public class EnemyThreeMovement : MonoBehaviour {
 	private Transform playerPos;
 	
 	private float speed;
-	
-	//TODO: Delete!
-	private void Start() {
-		Move(4f);
-	}
 
 	private void Move(float s) {
 		speed = s;

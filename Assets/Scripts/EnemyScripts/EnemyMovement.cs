@@ -28,7 +28,6 @@ public class EnemyMovement : MonoBehaviour {
 	private void YPosCheck() {
 		if (rb.position.y <= targetY) {
 			rb.velocity = Vector2.zero;
-			
 			gameObject.SendMessage("YReached", speed);
 			
 			return;

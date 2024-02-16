@@ -18,7 +18,7 @@ public class EnemySpawner : MonoBehaviour {
 	private float[,] enemyStats = {
 		{3, 1.5f, 1}, //e1
 		{5, 1f, 2}, //e2
-		{2, 1.5f, 3}, //e3
+		{2, 4f, 3}, //e3
 		{3, 1.5f, 4}, //e4
 	};
 
