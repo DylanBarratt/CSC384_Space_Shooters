@@ -2,12 +2,10 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 
 public class EnemyThreeMovement : MonoBehaviour {
-	[SerializeField] private Transform respawnLocs;
-	private Rigidbody2D rb;
-
 	private Transform playerPos;
 	
 	private float speed;
@@ -19,8 +17,6 @@ public class EnemyThreeMovement : MonoBehaviour {
 
 	private void Move(float s) {
 		speed = s;
-		
-		rb = GetComponent<Rigidbody2D>();
 		playerPos = GameObject.FindWithTag("Player").transform;
 	}
 
@@ -33,7 +29,7 @@ public class EnemyThreeMovement : MonoBehaviour {
 
 	private void OnCollisionEnter2D(Collision2D collision) {
 		if (collision.gameObject.CompareTag("Boundary")) {
-			transform.position = respawnLocs.position;
+			transform.position = new Vector3(Random.Range(-3, 3), 10);
 		}
 	}
 }
