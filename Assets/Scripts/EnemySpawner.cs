@@ -8,7 +8,8 @@ using Random = UnityEngine.Random;
 public class EnemySpawner : MonoBehaviour {
 	[SerializeField] private GameObject[] enemies;
 	[SerializeField] private Transform[] spawnPoints;
-	
+
+	private List<int> noEmptyNumEnemies;
 	private int[] numEnemies = new int[4];
 	private int frequency;
 	private int enemiesSpawned;
@@ -19,10 +20,14 @@ public class EnemySpawner : MonoBehaviour {
 		{3, 1.5f, 1}, //e1
 		{5, 1f, 2}, //e2
 		{2, 4f, 3}, //e3
-		{3, 8, 4}, //e4
+		{3, 8, 4}, //e4 TODO: maybe this could match the players health!?!
 	};
 
 	private Transform lastSpawnLoc;
+	
+	public void EnemyDestroyed() {
+		enemiesSpawned--;
+	}
 
 	public void EnemySpawnInit(int[] spawnAmount) {
 		if (spawnAmount.Length < 5) {
@@ -41,39 +46,40 @@ public class EnemySpawner : MonoBehaviour {
 		maxEnemies = 3;
 		Invoke(nameof(Spawn), frequency);
 	}
-
-	public void EnemyDestroyed() {
-		enemiesSpawned--;
-	}
-
+	
 	private void Spawn() {
 		if (enemiesSpawned >= maxEnemies) {
 			return;
 		}
 		
-		//TODO: maybe this could spawn enemies in a random order not 1->4
 		for (int i = 0; i < numEnemies.Length; i++) {
 			if (numEnemies[i] > 0) {
-				List<Transform> availableSpawnLocs = new List<Transform>(spawnPoints);
-				availableSpawnLocs.Remove(lastSpawnLoc);
-				Transform spawnLoc = RandomFromList(availableSpawnLocs);
-				lastSpawnLoc = spawnLoc;
-				
-				GameObject e = Instantiate(enemies[i], spawnLoc.position, enemies[i].transform.rotation);
-				enemiesSpawned++;
-				
-				//health, speed, value
-				float[] eVals = {enemyStats[i, 0], enemyStats[i, 1], enemyStats[i, 2]};
-				e.SendMessage("EnemyInit", eVals);
-				
-				numEnemies[i]--;
+				SpawnIndex(i);
+				break; //once an enemy is spawned stop spawning
 			}
 		}
 
 		FinishedSpawnsCheck();
 	}
 
+	private void SpawnIndex(int index) {
+		List<Transform> availableSpawnLocs = new List<Transform>(spawnPoints);
+		availableSpawnLocs.Remove(lastSpawnLoc);
+		Transform spawnLoc = RandomFromList(availableSpawnLocs);
+		lastSpawnLoc = spawnLoc;
+				
+		GameObject e = Instantiate(enemies[index], spawnLoc.position, enemies[index].transform.rotation);
+		enemiesSpawned++;
+				
+		//health, speed, value
+		float[] eVals = {enemyStats[index, 0], enemyStats[index, 1], enemyStats[index, 2]};
+		e.SendMessage("EnemyInit", eVals);
+				
+		numEnemies[index]--;
+	}
+
 	private void FinishedSpawnsCheck() {
+		Debug.Log("another one");
 		for (int i = 0; i < numEnemies.Length; i++) {
 			if (numEnemies[i] != 0) {
 				Invoke(nameof(Spawn), frequency);
