@@ -19,8 +19,6 @@ public class EnemyDeath : MonoBehaviour {
 	}
 
 	private void KillEnemy() {
-		Destroy(gameObject);
-
 		if (enemySpawner != null) {
 			enemySpawner.SendMessage("EnemyDestroyed", enemyValue);
 		}
@@ -28,5 +26,7 @@ public class EnemyDeath : MonoBehaviour {
 		if (gameManager != null) {
 			gameManager.SendMessage("AddMonies", enemyValue);
 		}
+		
+		Destroy(gameObject);
 	}
 }
