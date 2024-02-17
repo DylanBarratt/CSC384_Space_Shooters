@@ -13,10 +13,11 @@ GameObject:
   - component: {fileID: 6584573921077812208}
   - component: {fileID: 4248175527293818146}
   - component: {fileID: 878619853724310839}
+  - component: {fileID: 677349192838535042}
   - component: {fileID: 1104753766502082943}
   - component: {fileID: 1150605785485975409}
-  - component: {fileID: 677349192838535042}
   - component: {fileID: 4422872331155193657}
+  - component: {fileID: 1372967592298369190}
   m_Layer: 6
   m_Name: EnemyFour
   m_TagString: Enemy
@@ -36,7 +37,8 @@ Transform:
   m_LocalPosition: {x: -1.03, y: 1.85, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
-  m_Children: []
+  m_Children:
+  - {fileID: 6862877765217907557}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
 --- !u!212 &2653940380204178715
@@ -150,7 +152,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.013002619, y: -0.010315329}
+  m_Offset: {x: -0.0017054081, y: 0.009704411}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -161,7 +163,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.35493013, y: 0.4671325}
+  m_Size: {x: 0.32551408, y: 0.44001853}
   m_EdgeRadius: 0
 --- !u!114 &878619853724310839
 MonoBehaviour:
@@ -173,6 +175,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 65f391dfca162502290798ed02d10887, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &677349192838535042
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1049320576641065533}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4422a3980192767d5a48a9b5ad6b2414, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &1104753766502082943
@@ -199,18 +213,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf7eec2a4dcb8a7569343eb4fe937a91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &677349192838535042
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1049320576641065533}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4422a3980192767d5a48a9b5ad6b2414, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!95 &4422872331155193657
 Animator:
   serializedVersion: 5
@@ -232,3 +234,48 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1372967592298369190
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1049320576641065533}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ebd637e40cfcd73e80e45c4cd4126e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gunLoc: {fileID: 6862877765217907557}
+  bulletPrefab: {fileID: 8654673310026028745, guid: 57221826ceb229297ae4452fb7abf523, type: 3}
+--- !u!1 &6839058798575696329
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6862877765217907557}
+  m_Layer: 6
+  m_Name: GunLoc
+  m_TagString: Untagged
+  m_Icon: {fileID: 7250588514170254948, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6862877765217907557
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6839058798575696329}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.214, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3811102288384540266}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

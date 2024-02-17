@@ -19,7 +19,7 @@ public class EnemySpawner : MonoBehaviour {
 		{3, 1.5f, 1}, //e1
 		{5, 1f, 2}, //e2
 		{2, 4f, 3}, //e3
-		{3, 1.5f, 4}, //e4
+		{3, 8, 4}, //e4
 	};
 
 	private Transform lastSpawnLoc;
