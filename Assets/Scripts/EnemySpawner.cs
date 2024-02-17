@@ -13,6 +13,7 @@ public class EnemySpawner : MonoBehaviour {
 	private int[] numEnemies = new int[4];
 	private int frequency;
 	private int enemiesSpawned;
+	private int e4Count;
 	private int maxEnemies;
 
 	//health, speed, value
@@ -25,7 +26,12 @@ public class EnemySpawner : MonoBehaviour {
 
 	private Transform lastSpawnLoc;
 	
-	public void EnemyDestroyed() {
+	public void EnemyDestroyed(int eValue) { 
+		//felt like this was a weird (probably non-optimal) but slightly clever way of determining if the enemy killed was e4 :) - Dylan
+		if (eValue == enemyStats[3, 2]) { 
+			e4Count--;
+		}
+		
 		enemiesSpawned--;
 	}
 
@@ -43,6 +49,7 @@ public class EnemySpawner : MonoBehaviour {
 		
 		lastSpawnLoc = spawnPoints[0];
 		enemiesSpawned = 0;
+		e4Count = 0;
 		maxEnemies = 3;
 		Invoke(nameof(Spawn), frequency);
 	}
@@ -54,6 +61,11 @@ public class EnemySpawner : MonoBehaviour {
 		
 		for (int i = 0; i < numEnemies.Length; i++) {
 			if (numEnemies[i] > 0) {
+
+				if (i == 3 && e4Count >= 1) {
+					break; //dont spawn more than one e4
+				} 
+				
 				SpawnIndex(i);
 				break; //once an enemy is spawned stop spawning
 			}
@@ -66,7 +78,6 @@ public class EnemySpawner : MonoBehaviour {
 		List<Transform> availableSpawnLocs = new List<Transform>(spawnPoints);
 		availableSpawnLocs.Remove(lastSpawnLoc);
 		Transform spawnLoc = RandomFromList(availableSpawnLocs);
-		lastSpawnLoc = spawnLoc;
 				
 		GameObject e = Instantiate(enemies[index], spawnLoc.position, enemies[index].transform.rotation);
 		enemiesSpawned++;
@@ -76,10 +87,14 @@ public class EnemySpawner : MonoBehaviour {
 		e.SendMessage("EnemyInit", eVals);
 				
 		numEnemies[index]--;
+		lastSpawnLoc = spawnLoc;
+		
+		if (index == 3) {
+			e4Count++;
+		}
 	}
 
 	private void FinishedSpawnsCheck() {
-		Debug.Log("another one");
 		for (int i = 0; i < numEnemies.Length; i++) {
 			if (numEnemies[i] != 0) {
 				Invoke(nameof(Spawn), frequency);

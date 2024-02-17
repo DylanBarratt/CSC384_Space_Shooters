@@ -22,7 +22,7 @@ public class EnemyDeath : MonoBehaviour {
 		Destroy(gameObject);
 
 		if (enemySpawner != null) {
-			enemySpawner.SendMessage("EnemyDestroyed");
+			enemySpawner.SendMessage("EnemyDestroyed", enemyValue);
 		}
 
 		if (gameManager != null) {
