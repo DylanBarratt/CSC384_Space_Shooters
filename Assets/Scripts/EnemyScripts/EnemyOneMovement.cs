@@ -13,8 +13,9 @@ public class EnemyOneMovement : MonoBehaviour {
 	private void YReached(float s) {
 		speed = s;
 		rb = GetComponent<Rigidbody2D>();
+		
 		gameObject.SendMessage("Shoot");
-		XPatrol();
+		Invoke(nameof(XPatrol), 0.01f);
 	}
 	
 	private void XPatrol() {
@@ -25,7 +26,13 @@ public class EnemyOneMovement : MonoBehaviour {
 		if (collision.gameObject.CompareTag("SBoundary")) {
 			rb.velocity = Vector2.zero;
 			speed = -speed; //some very neat refactoring came from this cool line !
-			XPatrol();
+			Invoke(nameof(XPatrol), 0.01f);
 		}
+	}
+
+	private void StopMoving() {
+		CancelInvoke();
+		rb.velocity = Vector2.zero;
+		speed = 0;
 	}
 }

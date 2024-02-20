@@ -7,6 +7,8 @@ public class EnemyDeath : MonoBehaviour {
 	private GameObject gameManager;
 	private GameObject enemySpawner;
 
+	private Animator anime;
+
 	private int enemyValue;
 
 	private void SetValue(int value) {
@@ -16,6 +18,8 @@ public class EnemyDeath : MonoBehaviour {
 	private void Start() {
 		gameManager = GameObject.Find("GameManager");
 		enemySpawner = GameObject.Find("GameManager/EnemySpawner");
+
+		anime = GetComponent<Animator>();
 	}
 
 	private void KillEnemy() {
@@ -27,6 +31,10 @@ public class EnemyDeath : MonoBehaviour {
 			gameManager.SendMessage("AddMonies", enemyValue);
 		}
 		
-		Destroy(gameObject);
+		gameObject.SendMessage("StopMoving"); //should also stop any shooting calls
+		
+		anime.SetBool("ded", true);
+		
+		Destroy(gameObject, 1f);
 	}
 }

@@ -9,6 +9,7 @@ public class EnemyThreeMovement : MonoBehaviour {
 	private Transform playerPos;
 	
 	private float speed;
+	private bool ded;
 
 	private void Move(float s) {
 		speed = s;
@@ -16,6 +17,10 @@ public class EnemyThreeMovement : MonoBehaviour {
 	}
 
 	private void Update() {
+		if (ded) {
+			return;
+		}
+		
 		float step = speed * Time.deltaTime;
 
 		// move sprite towards the target location
@@ -26,5 +31,9 @@ public class EnemyThreeMovement : MonoBehaviour {
 		if (collision.gameObject.CompareTag("Boundary")) {
 			transform.position = new Vector3(Random.Range(-3, 3), 10);
 		}
+	}
+	
+	private void StopMoving() {
+		ded = true;
 	}
 }

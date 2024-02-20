@@ -15,6 +15,8 @@ public class EnemyFourMovement : MonoBehaviour {
 	private const float MOVE_LIMITER = 0.7f;
 	
 	private bool yReach = false;
+	private bool ded;
+	
 	private void Start() {
 		rb = GetComponent<Rigidbody2D>();
 		anime = GetComponent<Animator>();
@@ -51,7 +53,7 @@ public class EnemyFourMovement : MonoBehaviour {
 	}
 	
 	private void FixedUpdate() {
-		if (!yReach) {
+		if (!yReach || ded) {
 			return;
 		}
 
@@ -67,5 +69,10 @@ public class EnemyFourMovement : MonoBehaviour {
 		}
 
 		rb.velocity = new Vector2(horizontal * speed, vertical * speed);
+	}
+	
+	private void StopMoving() {
+		ded = true;
+		rb.velocity = Vector2.zero;
 	}
 }

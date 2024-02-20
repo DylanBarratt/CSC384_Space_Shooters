@@ -18,4 +18,8 @@ public class EnemyOneShooting : MonoBehaviour {
 		Instantiate(bulletPrefab, rSpawn, Quaternion.identity);
 		Invoke(nameof(Shoot), rateOfFire);
 	}
+
+	private void StopMoving() {
+		CancelInvoke();
+	}
 }
