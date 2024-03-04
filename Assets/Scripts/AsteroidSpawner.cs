@@ -10,7 +10,7 @@ public class AsteroidSpawner : MonoBehaviour {
 	private int asteroidInterval;
 
 	private float xPos = 0f;
-	private float yPos = 7f;
+	private float yPos;
 	private float ySpawnRange = 1.5f;
 	private float xSpawnRange = 2.3f;
 	private int screenWidth = 720;
@@ -19,6 +19,7 @@ public class AsteroidSpawner : MonoBehaviour {
 	private void Start() {
 		asteroidInterval = 5;
 
+		yPos = transform.position.y;
 		xSpawnRange = Camera.main.ScreenToWorldPoint(new Vector2(screenWidth, 0)).x;
 		
 		SpawnAsteroids();

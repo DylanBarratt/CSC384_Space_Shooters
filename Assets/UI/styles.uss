@@ -10,12 +10,12 @@
 .unity-progress-bar__background {
     border-width: 0;
     border-radius: 2px;
-    background-color: #444444;
+    background-color: #000000;
 }
 
 .unity-progress-bar__progress {
     margin: 0;
     padding: 0;
     border-radius: 2px;
-    background-color: #000000;
+    background-color: #ffffff;
 }
