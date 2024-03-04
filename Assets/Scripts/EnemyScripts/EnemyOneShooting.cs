@@ -8,22 +8,14 @@ public class EnemyOneShooting : MonoBehaviour {
 	
 	private float rateOfFire = 2f;
 
-	private bool ded;
-
 	private void Shoot() {
-		if (ded) return;
-		
 		Vector2 gunLocPosition = gunLoc.position;
 		float bulletOffset = 0.1f;
 		Vector2 lSpawn = new Vector2(gunLocPosition.x - bulletOffset, gunLocPosition.y);
 		Vector2 rSpawn = new Vector2(gunLocPosition.x + bulletOffset, gunLocPosition.y);
-		
+
 		Instantiate(bulletPrefab, lSpawn, Quaternion.identity);
 		Instantiate(bulletPrefab, rSpawn, Quaternion.identity);
 		Invoke(nameof(Shoot), rateOfFire);
-	}
-
-	private void Ded() {
-		ded = true;
 	}
 }

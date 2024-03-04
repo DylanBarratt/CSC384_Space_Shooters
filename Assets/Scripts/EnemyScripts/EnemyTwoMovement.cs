@@ -50,8 +50,4 @@ public class EnemyTwoMovement : MonoBehaviour {
             MoveThenStop();
         }
     }
-
-    private void Ded() {
-        CancelInvoke();
-    }
 }

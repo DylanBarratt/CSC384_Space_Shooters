@@ -15,7 +15,6 @@ public class EnemyFourMovement : MonoBehaviour {
 	private const float MOVE_LIMITER = 0.7f;
 	
 	private bool yReach;
-	private bool ded;
 	
 	private void Start() {
 		rb = GetComponent<Rigidbody2D>();
@@ -28,7 +27,7 @@ public class EnemyFourMovement : MonoBehaviour {
 	}
 
 	private void Update() {
-		if (!yReach || ded) return;
+		if (!yReach) return;
 		
 
 		horizontal = -Input.GetAxisRaw("Horizontal");
@@ -52,7 +51,7 @@ public class EnemyFourMovement : MonoBehaviour {
 	}
 	
 	private void FixedUpdate() {
-		if (!yReach|| ded) return;
+		if (!yReach) return;
 
 		if (rb.position.y >= 5.5) {
 			vertical = -Math.Abs(vertical); //never let movement go past 5.5
@@ -66,10 +65,6 @@ public class EnemyFourMovement : MonoBehaviour {
 		}
 
 		rb.velocity = new Vector2(horizontal * speed, vertical * speed);
-	}
-
-	private void Ded() {
-		ded = true;
 	}
 }
 
