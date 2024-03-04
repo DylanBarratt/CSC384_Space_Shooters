@@ -12,6 +12,8 @@ public class Asteroid : MonoBehaviour {
     private int health; //number of hits that can be sustained
     private int moniesValue = 1;
 
+    private bool ded;
+
     public void Init(float fs, int h) {
         fallingSpeed = fs;
         health = h;
@@ -36,17 +38,6 @@ public class Asteroid : MonoBehaviour {
         }
     }
 
-    private void KillAsteroid() {
-        Destroy(gameObject);
-    }
-    
-    private void KillAsteroid(bool player) {
-        Destroy(gameObject);
-        gameManager.SendMessage("AddMonies", moniesValue);
-    }
-
-    
-
     private void Damage() {
         health--;
         
@@ -56,7 +47,27 @@ public class Asteroid : MonoBehaviour {
     }
 
     private void FixedUpdate() {
+        if (ded) return;
+        
         fallingSpeed += Time.deltaTime;
         rb.velocity = Vector2.down * fallingSpeed;
+    }
+    
+    private void KillAsteroid() {
+        Destroy(gameObject);
+    }
+    
+    private void KillAsteroid(bool player) {
+        DedAnime();
+        gameManager.SendMessage("AddMonies", moniesValue);
+    }
+
+    private void DedAnime() {
+        GetComponent<Animator>().SetBool("Ded", true);
+        ded = true;
+        Destroy(GetComponent<Rigidbody2D>());
+        Destroy(GetComponent<Collider2D>());
+            
+        Destroy(gameObject, 1f);
     }
 }
