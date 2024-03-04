@@ -35,4 +35,8 @@ public class EnemyMovement : MonoBehaviour {
 		
 		Invoke(nameof(YPosCheck), moveDelay);
 	}
+
+	private void StopY() {
+		CancelInvoke();
+	}
 }

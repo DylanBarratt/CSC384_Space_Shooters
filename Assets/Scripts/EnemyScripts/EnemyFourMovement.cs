@@ -52,9 +52,7 @@ public class EnemyFourMovement : MonoBehaviour {
 	}
 	
 	private void FixedUpdate() {
-		if (!yReach) {
-			return;
-		}
+		if (!yReach|| ded) return;
 
 		if (rb.position.y >= 5.5) {
 			vertical = -Math.Abs(vertical); //never let movement go past 5.5

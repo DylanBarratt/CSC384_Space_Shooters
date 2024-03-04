@@ -26,7 +26,8 @@ public class EnemyDeath : MonoBehaviour {
 		Destroy(GetComponent<BoxCollider2D>());
 		Destroy(GetComponent<Rigidbody2D>());
         
-		SendMessage("Ded"); //for e3 movement
+		SendMessage("Ded"); 
+		SendMessage("StopY"); //incase die while moving to y pos
         
 		if (enemySpawner != null) {
 			enemySpawner.SendMessage("EnemyDestroyed", enemyValue);

@@ -35,4 +35,8 @@ public class EnemyThreeMovement : MonoBehaviour {
 	private void Ded() {
 		ded = true;
 	}
+
+	private void StopY() {
+		//to silence the editor errors lul
+	}
 }
