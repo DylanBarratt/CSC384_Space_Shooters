@@ -36,8 +36,4 @@ public class PlayerMovement : MonoBehaviour {
 
         rb.velocity = new Vector2(horizontal * SPEED, vertical * SPEED);
     }
-
-    private void StopMovement() {
-        rb.velocity = Vector2.zero;
-    }
 }

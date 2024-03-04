@@ -29,10 +29,4 @@ public class EnemyOneMovement : MonoBehaviour {
 			Invoke(nameof(XPatrol), 0.01f);
 		}
 	}
-
-	private void StopMoving() {
-		CancelInvoke();
-		rb.velocity = Vector2.zero;
-		speed = 0;
-	}
 }

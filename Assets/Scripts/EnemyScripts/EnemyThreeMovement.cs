@@ -9,6 +9,7 @@ public class EnemyThreeMovement : MonoBehaviour {
 	private Transform playerPos;
 	
 	private float speed;
+	
 	private bool ded;
 
 	private void Move(float s) {
@@ -17,9 +18,7 @@ public class EnemyThreeMovement : MonoBehaviour {
 	}
 
 	private void Update() {
-		if (ded) {
-			return;
-		}
+		if (ded) return;
 		
 		float step = speed * Time.deltaTime;
 
@@ -33,7 +32,7 @@ public class EnemyThreeMovement : MonoBehaviour {
 		}
 	}
 	
-	private void StopMoving() {
+	private void Ded() {
 		ded = true;
 	}
 }

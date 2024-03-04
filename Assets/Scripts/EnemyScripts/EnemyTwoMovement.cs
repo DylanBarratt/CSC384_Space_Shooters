@@ -50,9 +50,8 @@ public class EnemyTwoMovement : MonoBehaviour {
             MoveThenStop();
         }
     }
-    
-    private void StopMoving() {
+
+    private void Ded() {
         CancelInvoke();
-        rb.velocity = Vector2.zero;
     }
 }

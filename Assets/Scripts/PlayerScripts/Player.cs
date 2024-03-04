@@ -40,8 +40,9 @@ public class Player : MonoBehaviour {
 	}
 
 	private void KillPlayer() { //health 0 checking doesnt happen here so that a player can be killed regardless of health
-		gameObject.BroadcastMessage("StopMovement");
-		gameObject.GetComponent<CapsuleCollider2D>().enabled = false;
+		Destroy(GetComponent<Rigidbody2D>());
+		Destroy(GetComponent<CapsuleCollider2D>());
+		
 		UIGameObject.SetActive(false);
 		
 		anime.SetTrigger("Ded");

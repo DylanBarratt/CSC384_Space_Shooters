@@ -23,6 +23,11 @@ public class EnemyDeath : MonoBehaviour {
 	}
 
 	private void KillEnemy() {
+		Destroy(GetComponent<BoxCollider2D>());
+		Destroy(GetComponent<Rigidbody2D>());
+        
+		SendMessage("Ded"); //for e3 movement
+        
 		if (enemySpawner != null) {
 			enemySpawner.SendMessage("EnemyDestroyed", enemyValue);
 		}
@@ -30,8 +35,6 @@ public class EnemyDeath : MonoBehaviour {
 		if (gameManager != null) {
 			gameManager.SendMessage("AddMonies", enemyValue);
 		}
-		
-		gameObject.SendMessage("StopMoving"); //should also stop any shooting calls
 		
 		anime.SetBool("ded", true);
 		

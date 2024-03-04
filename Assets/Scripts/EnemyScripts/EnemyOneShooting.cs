@@ -8,7 +8,11 @@ public class EnemyOneShooting : MonoBehaviour {
 	
 	private float rateOfFire = 2f;
 
+	private bool ded;
+
 	private void Shoot() {
+		if (ded) return;
+		
 		Vector2 gunLocPosition = gunLoc.position;
 		float bulletOffset = 0.1f;
 		Vector2 lSpawn = new Vector2(gunLocPosition.x - bulletOffset, gunLocPosition.y);
@@ -19,7 +23,7 @@ public class EnemyOneShooting : MonoBehaviour {
 		Invoke(nameof(Shoot), rateOfFire);
 	}
 
-	private void StopMoving() {
-		CancelInvoke();
+	private void Ded() {
+		ded = true;
 	}
 }

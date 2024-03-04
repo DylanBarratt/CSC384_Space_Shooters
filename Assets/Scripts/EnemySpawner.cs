@@ -103,6 +103,8 @@ public class EnemySpawner : MonoBehaviour {
 	}
 	
 	private void SpawnIndex(int index) {
+		CancelInvoke(); //only spawn one in each frequency
+		
 		List<Transform> availableSpawnLocs = new List<Transform>(spawnPoints);
 		availableSpawnLocs.Remove(lastSpawnLoc);
 		Transform spawnLoc = RandomFromList(availableSpawnLocs);
@@ -119,6 +121,7 @@ public class EnemySpawner : MonoBehaviour {
 		if (index == 3) {
 			e4Count++;
 		}
+		
 		enemiesSpawned++;
 	}
 

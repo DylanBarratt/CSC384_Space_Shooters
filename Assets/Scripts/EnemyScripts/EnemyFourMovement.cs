@@ -14,7 +14,7 @@ public class EnemyFourMovement : MonoBehaviour {
 	
 	private const float MOVE_LIMITER = 0.7f;
 	
-	private bool yReach = false;
+	private bool yReach;
 	private bool ded;
 	
 	private void Start() {
@@ -28,9 +28,8 @@ public class EnemyFourMovement : MonoBehaviour {
 	}
 
 	private void Update() {
-		if (!yReach) {
-			return;
-		}
+		if (!yReach || ded) return;
+		
 
 		horizontal = -Input.GetAxisRaw("Horizontal");
 		vertical = -Input.GetAxisRaw("Vertical");
@@ -53,7 +52,7 @@ public class EnemyFourMovement : MonoBehaviour {
 	}
 	
 	private void FixedUpdate() {
-		if (!yReach || ded) {
+		if (!yReach) {
 			return;
 		}
 
@@ -70,9 +69,9 @@ public class EnemyFourMovement : MonoBehaviour {
 
 		rb.velocity = new Vector2(horizontal * speed, vertical * speed);
 	}
-	
-	private void StopMoving() {
+
+	private void Ded() {
 		ded = true;
-		rb.velocity = Vector2.zero;
 	}
 }
+
