@@ -12,7 +12,7 @@ public class EnemySpawner : MonoBehaviour {
 	private List<int> noEmptyNumEnemies;
 	private int[] numEnemies = new int[4];
 	private int frequency;
-	private int enemiesSpawned;
+	private int enemiesAlive;
 	private int e4Count;
 	private int maxEnemies;
 
@@ -32,8 +32,7 @@ public class EnemySpawner : MonoBehaviour {
 			e4Count--;
 		}
 		
-		enemiesSpawned--;
-		Invoke(nameof(Spawn), frequency);
+		enemiesAlive--;
 	}
 
 	public void EnemySpawnInit(int[] spawnAmount) {
@@ -49,24 +48,26 @@ public class EnemySpawner : MonoBehaviour {
 		frequency = spawnAmount[4];
 		
 		lastSpawnLoc = spawnPoints[0];
-		enemiesSpawned = 0;
+		enemiesAlive = 0;
 		e4Count = 0;
 		maxEnemies = 3;
-		Invoke(nameof(Spawn), frequency);
+		
+		Spawn();
 	}
 	
 	//spawn all types of an enemy before moving to the next
 	//once all enemies spawned call boss!!
 	private void Spawn() {
+		Invoke(nameof(Spawn), frequency);
+		
 		for (int i = 0; i < numEnemies.Length; i++) {
 			if (CanSpawn(i)) {
 				SpawnIndex(i);
-				Invoke(nameof(Spawn), frequency);
 				return;
 			}
 		}
 
-		if (AllSpawned()) {
+		if (AllSpawned() && enemiesAlive == 0) {
 			CancelInvoke();
 			Debug.Log("Boss time baby");
 		}
@@ -74,7 +75,7 @@ public class EnemySpawner : MonoBehaviour {
 
 	private bool CanSpawn(int index) {
 		//Too many man
-		if (enemiesSpawned >= maxEnemies) {
+		if (enemiesAlive >= maxEnemies) {
 			return false;
 		}
 
@@ -103,8 +104,6 @@ public class EnemySpawner : MonoBehaviour {
 	}
 	
 	private void SpawnIndex(int index) {
-		CancelInvoke(); //only spawn one in each frequency
-		
 		List<Transform> availableSpawnLocs = new List<Transform>(spawnPoints);
 		availableSpawnLocs.Remove(lastSpawnLoc);
 		Transform spawnLoc = RandomFromList(availableSpawnLocs);
@@ -122,7 +121,7 @@ public class EnemySpawner : MonoBehaviour {
 			e4Count++;
 		}
 		
-		enemiesSpawned++;
+		enemiesAlive++;
 	}
 
 	private Transform RandomFromList(List<Transform> list) {
