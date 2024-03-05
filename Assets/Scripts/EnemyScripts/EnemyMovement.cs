@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour {
@@ -7,14 +5,12 @@ public class EnemyMovement : MonoBehaviour {
 
 	private float speed;
 	private float targetY;
-	private float moveDelay;
+	private float moveDelay = 0.2f;
 	
 	private void Move(float s) {
 		speed = s;
-		
 		rb = GetComponent<Rigidbody2D>();
 		
-		moveDelay = 0.2f;
 		MoveToYPosition();
 	}
 	
@@ -23,6 +19,7 @@ public class EnemyMovement : MonoBehaviour {
 		targetY = Random.Range(0, screenTop / 1.5f);
 
 		rb.velocity = new Vector2(0, -(speed * 1.5f));
+		
 		Invoke(nameof(YPosCheck), moveDelay);
 	}
 

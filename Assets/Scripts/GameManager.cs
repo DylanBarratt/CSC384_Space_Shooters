@@ -25,13 +25,23 @@ public class GameManager : MonoBehaviour {
     }
 
     //0 tut, lvls 1 - 4
+    // private int[,] LEVEL_SPAWN_AMOUNTS = {
+    //     //spawn_delay, e1, e2, e3, e4
+    //     { 1, 1, 0, 0, 0 }, 
+    //     { 4, 10, 3, 0, 0},
+    //     { 3, 5, 5, 3, 0},
+    //     { 2, 3, 3, 15, 0},
+    //     { 1, 3, 3, 5, 3},
+    // };
+    
+    //TODO: delete dev vals
     private int[,] LEVEL_SPAWN_AMOUNTS = {
         //spawn_delay, e1, e2, e3, e4
         { 1, 1, 0, 0, 0 }, 
-        { 4, 10, 3, 0, 0},
-        { 3, 5, 5, 3, 0},
-        { 2, 3, 3, 15, 0},
-        { 1, 3, 3, 5, 3},
+        { 1, 1, 0, 0, 0 }, 
+        { 1, 1, 0, 0, 0 }, 
+        { 1, 1, 0, 0, 0 }, 
+        { 1, 1, 0, 0, 0 }, 
     };
 
     private void StartLevel(int lvlID) {

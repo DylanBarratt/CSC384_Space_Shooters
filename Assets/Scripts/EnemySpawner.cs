@@ -9,8 +9,9 @@ public class EnemySpawner : MonoBehaviour {
 	[SerializeField] private GameObject[] enemies;
 	[SerializeField] private Transform[] spawnPoints;
 	[SerializeField] private GameObject gameManager;
+	[SerializeField] private GameObject bossSpawner;
 
-	private int LEVEL_NUM = 4;
+	private int NUM_LEVELS = 4;
 	
 	private List<int> noEmptyNumEnemies;
 	private int[] numEnemies = new int[4];
@@ -21,20 +22,20 @@ public class EnemySpawner : MonoBehaviour {
 	private int lvlID;
 
 	//health, speed, value
-	private float[,] enemyStats = {
-		{3, 1.5f, 1}, //e1
-		{5, 1f, 2}, //e2
-		{2, 4f, 3}, //e3
-		{3, 8, 4}, //e4 TODO: maybe this could match the players health!?!
-	};
-	
-	//TODO: delete testing vals!!!!!
 	// private float[,] enemyStats = {
-	// 	{1, 1.5f, 1}, //e1
-	// 	{1, 1f, 2}, //e2
-	// 	{1, 4f, 3}, //e3
-	// 	{1, 8, 4}, //e4
+	// 	{3, 1.5f, 1}, //e1
+	// 	{5, 1f, 2}, //e2
+	// 	{2, 4f, 3}, //e3
+	// 	{3, 8, 4}, //e4 TODO: maybe this could match the players health!?!
 	// };
+	//
+	//TODO: delete testing vals!!!!!
+	private float[,] enemyStats = {
+		{1, 1.5f, 1}, //e1
+		{1, 1f, 2}, //e2
+		{1, 4f, 3}, //e3
+		{1, 8, 4}, //e4
+	};
 
 	private Transform lastSpawnLoc;
 	
@@ -83,18 +84,21 @@ public class EnemySpawner : MonoBehaviour {
 		if (AllSpawned() && enemiesAlive == 0) {
 			CancelInvoke();
 			Debug.Log("Boss time baby"); //TODO: currently circumventing da boss
-			Debug.Log("Moving to level " + (lvlID + 1));
-			NextLevel(); //TODO: should be called after boss has died instead
+			bossSpawner.SendMessage("SpawnBoss", lvlID);
+			// NextLevel(); //TODO: should be called after boss has died instead
 		}
 	}
 
 	private void NextLevel() {
-		if (lvlID + 1 > LEVEL_NUM) {
-			Debug.Log("GGs bro");
+		int nextLvlID = lvlID++;
+		Debug.Log("Moving to level " + nextLvlID);
+		
+		if (nextLvlID > NUM_LEVELS) {
+			Debug.Log("GGs bro"); //TODO: implement end game here
 			return;
 		}
 		
-		gameManager.SendMessage("StartLevel", lvlID + 1);
+		gameManager.SendMessage("StartLevel", nextLvlID);
 	}
 
 	private bool CanSpawn(int index) {
