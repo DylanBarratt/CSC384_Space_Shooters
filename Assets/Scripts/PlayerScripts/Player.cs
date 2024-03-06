@@ -43,6 +43,7 @@ public class Player : MonoBehaviour {
 		Destroy(GetComponent<Rigidbody2D>());
 		Destroy(GetComponent<CapsuleCollider2D>());
 		
+		UIGameObject.SendMessage("DisplayBossBar", false);
 		UIGameObject.SetActive(false);
 		
 		anime.SetTrigger("Ded");

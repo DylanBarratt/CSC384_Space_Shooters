@@ -8,13 +8,14 @@ public class AsteroidSpawner : MonoBehaviour {
 	[SerializeField] private GameObject asteriod;
 	
 	private int asteroidInterval;
+	private int screenWidth = 720;
 
 	private float xPos = 0f;
 	private float yPos;
 	private float ySpawnRange = 1.5f;
 	private float xSpawnRange = 2.3f;
-	private int screenWidth = 720;
 
+	private bool shouldSpawn = true;
 
 	private void Start() {
 		asteroidInterval = 5;
@@ -26,6 +27,8 @@ public class AsteroidSpawner : MonoBehaviour {
 	}
 
 	private void SpawnAsteroids() {
+		if (!shouldSpawn) return;
+		
 		Vector2 spawnPos = new Vector2(
 			0 + Random.Range(-xSpawnRange, xSpawnRange), 
 			yPos + Random.Range(-ySpawnRange, ySpawnRange)
@@ -37,7 +40,11 @@ public class AsteroidSpawner : MonoBehaviour {
 		Invoke(nameof(SpawnAsteroids), asteroidInterval);
 	}
 
-	//FOR TESTING ONLY!!
+	private void CanSpawn(bool spawn) {
+		shouldSpawn = spawn;
+	}
+
+	//TODO: FOR TESTING ONLY!!
 	private void ShowBounds() {
 		Instantiate(asteriod, new Vector2(xPos - xSpawnRange, yPos + ySpawnRange), quaternion.identity); //Left Top
 		Instantiate(asteriod, new Vector2(xPos - xSpawnRange, yPos - ySpawnRange), quaternion.identity); //Left Bot

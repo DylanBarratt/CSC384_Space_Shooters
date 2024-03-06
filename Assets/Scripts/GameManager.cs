@@ -38,7 +38,7 @@ public class GameManager : MonoBehaviour {
     private int[,] LEVEL_SPAWN_AMOUNTS = {
         //spawn_delay, e1, e2, e3, e4
         { 1, 1, 0, 0, 0 }, 
-        { 1, 1, 1, 1, 1 }, 
+        { 1, 1, 0, 0, 0 }, 
         { 1, 1, 0, 0, 0 }, 
         { 1, 1, 0, 0, 0 }, 
         { 1, 1, 0, 0, 0 }, 

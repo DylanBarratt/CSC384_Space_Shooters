@@ -8,6 +8,13 @@ public class EnemyOneShooting : MonoBehaviour {
 	
 	private float rateOfFire = 2f;
 
+	//used in boss 1
+	private void SetROF(float rof) {
+		rateOfFire = rof;
+		CancelInvoke();
+		Invoke(nameof(Shoot), rateOfFire);
+	}
+
 	private void Shoot() {
 		Vector2 gunLocPosition = gunLoc.position;
 		float bulletOffset = 0.1f;

@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class BossMovement : MonoBehaviour {
 
-	private Vector2 targetY = new Vector2(0, 10);
+	private Vector2 targetY = new Vector2(0, 3.5f);
 
 	private float speed = 3f;
 	
