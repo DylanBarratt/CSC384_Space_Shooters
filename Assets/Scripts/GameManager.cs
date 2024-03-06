@@ -9,17 +9,7 @@ public class GameManager : MonoBehaviour {
     [SerializeField] private GameObject HUD;
     [SerializeField] private GameObject Starz;
 
-    private int loopMonies;
-
-    public void AddMonies(int amnt) {
-        loopMonies += amnt;
-        
-        HUD.SendMessage("UpdateMonies", loopMonies);
-    }
-
     private void Start() {
-        loopMonies = 0;
-        
         //TODO: check if tutorial has been done, if not load tut instead
         StartLevel(1);
     }

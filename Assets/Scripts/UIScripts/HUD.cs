@@ -9,9 +9,19 @@ public class HUD : MonoBehaviour {
 	private Label monies;
 	private ProgressBar health;
 	private ProgressBar bossHealth;
-
+	private Label healthTxt;
+	
+	private void Start() {
+		root = gameObject.GetComponent<UIDocument>().rootVisualElement;
+		monies = root.Q<Label>("MoniesCounter");
+		health = root.Q<ProgressBar>("HealthBar");
+		bossHealth = root.Q<ProgressBar>("BossBar");
+		healthTxt = root.Q<Label>("HealthBarTxt");
+	}
+	
 	private void UpdateHealth(float val) {
 		health.value = val;
+		healthTxt.text = (int) val + "%";
 	}
 
 	private void UpdateBossHealth(float val) {
@@ -25,11 +35,5 @@ public class HUD : MonoBehaviour {
 	private void UpdateMonies(int val) {
 		//TODO: could put something funny here for when money over 999
 		monies.text = "$" + val;
-	}
-	private void Start() {
-		root = gameObject.GetComponent<UIDocument>().rootVisualElement;
-		monies = root.Q<Label>("MoniesCounter");
-		health = root.Q<ProgressBar>("HealthBar");
-		bossHealth = root.Q<ProgressBar>("BossBar");
 	}
 }

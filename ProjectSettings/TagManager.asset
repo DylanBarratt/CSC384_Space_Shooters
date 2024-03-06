@@ -11,6 +11,7 @@ TagManager:
   - PlayerBullet
   - UBoundary
   - SBoundary
+  - Item
   layers:
   - Default
   - TransparentFX

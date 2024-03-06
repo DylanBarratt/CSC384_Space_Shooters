@@ -11,8 +11,9 @@ public class Player : MonoBehaviour {
 	private GameObject gameManager;
 	
 	[SerializeField] private GameObject dedUI;
-	
-	private int startingHealth;
+
+	private int initialHealth = 3;
+	private int fullHealthAmnt;
 	private int health;
 
 	private float speed;
@@ -32,19 +33,45 @@ public class Player : MonoBehaviour {
 
 	private void LoadPlayerStats() {
 		if (!File.Exists(SaveSystem.GetPlayerSavePath())) {
-			SaveSystem.SavePlayer(3, 5, 0.2f); //default player stats
+			SaveSystem.SavePlayer(initialHealth, 5, 0.2f); //default player stats
 		}
 
 		PlayerData player = SaveSystem.LoadPlayer();
 		
-		startingHealth = player.health;
-		health = startingHealth;
+		health = player.health;
+		fullHealthAmnt = health;
 
 		speed = player.speed;
 		gameObject.SendMessage("SetSpeed", speed);
 		
 		rateOfFire = player.rateOfFire;
 		gameObject.SendMessage("SetROF", rateOfFire);
+	}
+
+	private void AddHealth(int amnt) {
+		health = fullHealthAmnt; //heal player
+		health += amnt;
+		
+		fullHealthAmnt = health;
+		UpdateHealth();
+		
+		SavePlayerStats();
+	}
+
+	private void UpdateHealth() {
+		UIGameObject.SendMessage("UpdateHealth", (float) health / initialHealth * 100);
+	}
+	
+	private void AddSpeed(int amnt) {
+		speed += amnt;
+		gameObject.SendMessage("SetSpeed", speed);
+		SavePlayerStats();
+	}
+	
+	private void AddROF(int amnt) {
+		rateOfFire += amnt;
+		gameObject.SendMessage("SetROF", rateOfFire);
+		SavePlayerStats();
 	}
 
 	private void SavePlayerStats() {
@@ -64,7 +91,7 @@ public class Player : MonoBehaviour {
 			KillPlayer();
 		}
 		else {
-			UIGameObject.SendMessage("UpdateHealth", (float) health / startingHealth * 100);
+			UpdateHealth();
 		}
 	}
 
@@ -72,7 +99,6 @@ public class Player : MonoBehaviour {
 		Destroy(GetComponent<Rigidbody2D>());
 		Destroy(GetComponent<CapsuleCollider2D>());
 		
-		UIGameObject.SendMessage("DisplayBossBar", false);
 		UIGameObject.SetActive(false);
 		
 		anime.SetTrigger("Ded");

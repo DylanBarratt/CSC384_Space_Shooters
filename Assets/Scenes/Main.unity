@@ -836,6 +836,7 @@ GameObject:
   - component: {fileID: 1239176207}
   - component: {fileID: 1239176206}
   - component: {fileID: 1239176205}
+  - component: {fileID: 1239176208}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -889,6 +890,22 @@ Transform:
   - {fileID: 337958521}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1239176208
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1239176204}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11f451247d12e1821b4a8da5b7890093, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HUD: {fileID: 474490939}
+  healthUpPrefab: {fileID: 87824053399660021, guid: aa7e52873b971ae7ba94f5fe16b75831, type: 3}
+  speedUpPrefab: {fileID: 430500170949720097, guid: 05ee921008680d0b6bf35469c2abb239, type: 3}
+  rofUpPrefab: {fileID: 8206345976389221447, guid: 0330521b699837f20b964f71fd999704, type: 3}
 --- !u!1 &1924368214 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1610715736012720753, guid: 7c96d596b0dd098499d8c07ed93f46cc, type: 3}
@@ -1158,6 +1175,10 @@ PrefabInstance:
     - target: {fileID: 151443574260691755, guid: 0a2b6388821f087f8939cb79ada12efc, type: 3}
       propertyPath: m_Name
       value: AsteroidSpawner
+      objectReference: {fileID: 0}
+    - target: {fileID: 151443574260691755, guid: 0a2b6388821f087f8939cb79ada12efc, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4277116906981374291, guid: 0a2b6388821f087f8939cb79ada12efc, type: 3}
       propertyPath: m_LocalPosition.x
