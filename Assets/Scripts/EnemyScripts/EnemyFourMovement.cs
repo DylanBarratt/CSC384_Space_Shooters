@@ -33,9 +33,6 @@ public class EnemyFourMovement : MonoBehaviour {
 		horizontal = -Input.GetAxisRaw("Horizontal");
 		vertical = -Input.GetAxisRaw("Vertical");
 			
-		anime.SetFloat("xVel", horizontal);
-		anime.SetFloat("yVel", vertical);
-			
 		//Means e4 only shoots on press and release. Allows player a chance to ded them - Dylan
 		if (Input.GetButtonDown("Fire1")){
 			SendShoot();

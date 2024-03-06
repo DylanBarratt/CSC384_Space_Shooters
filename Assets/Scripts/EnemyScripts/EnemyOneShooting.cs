@@ -9,8 +9,6 @@ public class EnemyOneShooting : MonoBehaviour {
 	private float rateOfFire = 2f;
 
 	private void Shoot() {
-		Debug.Log("Soooooott");
-		
 		Vector2 gunLocPosition = gunLoc.position;
 		float bulletOffset = 0.1f;
 		Vector2 lSpawn = new Vector2(gunLocPosition.x - bulletOffset, gunLocPosition.y);

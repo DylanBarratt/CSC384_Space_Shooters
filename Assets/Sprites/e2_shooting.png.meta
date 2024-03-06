@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 2b3f6ea2d41bc29c2904eeffd8107592
+guid: dc3424577ec898819b9f5e846c7055ac
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -127,9 +127,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 32
-        width: 32
-        height: 32
+        y: 64
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -137,8 +137,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b3d3663092d32108ea52d2b7442ea96c
-      internalID: 2134009204
+      spriteID: 429cbffce51c485098399ba792ef70c1
+      internalID: -2001760858
       vertices: []
       indices: 
       edges: []
@@ -147,10 +147,10 @@ TextureImporter:
       name: e2_shooting_1
       rect:
         serializedVersion: 2
-        x: 32
-        y: 32
-        width: 32
-        height: 32
+        x: 64
+        y: 64
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -158,8 +158,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9409724f1900dc5e39b4dd7feef1446e
-      internalID: -1203295371
+      spriteID: 466a4ad0fb8190e2ca7ee989024bb4bb
+      internalID: -1565299705
       vertices: []
       indices: 
       edges: []
@@ -170,8 +170,8 @@ TextureImporter:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 32
-        height: 32
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -179,8 +179,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7be792e2b6a3d63a68c71feb91fbc887
-      internalID: 447688567
+      spriteID: ba2b4f39a8c8e55fa86b29a9ccbfe9c7
+      internalID: 151421475
       vertices: []
       indices: 
       edges: []
@@ -189,10 +189,10 @@ TextureImporter:
       name: e2_shooting_3
       rect:
         serializedVersion: 2
-        x: 32
+        x: 64
         y: 0
-        width: 32
-        height: 32
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -200,8 +200,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 97aa53d16d57147d4b03762e61f2e0ff
-      internalID: 1960463633
+      spriteID: e1f79ca411092fb438d5fd44f4e841fc
+      internalID: -214271801
       vertices: []
       indices: 
       edges: []
@@ -217,10 +217,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      e2_shooting_0: 2134009204
-      e2_shooting_1: -1203295371
-      e2_shooting_2: 447688567
-      e2_shooting_3: 1960463633
+      e2_shooting_0: -2001760858
+      e2_shooting_1: -1565299705
+      e2_shooting_2: 151421475
+      e2_shooting_3: -214271801
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
