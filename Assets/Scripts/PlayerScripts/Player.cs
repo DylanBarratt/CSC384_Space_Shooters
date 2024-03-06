@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 
 public class Player : MonoBehaviour { 
@@ -14,18 +15,46 @@ public class Player : MonoBehaviour {
 	private int startingHealth;
 	private int health;
 
+	private float speed;
+	private float rateOfFire;
+
 	private bool ded;
 
 	private void Start() {
-		startingHealth = 3;
-		health = startingHealth;
-		ded = false;
-
 		gameManager = GameObject.Find("GameManager");
 		UIGameObject = GameObject.Find("GameManager/HUD_UI");
 		anime = GetComponent<Animator>();
 		pl = GetComponent<PlayerMovement>();
+		
+		DeletePlayerStats(); //TODO: remove (dev)
+		LoadPlayerStats();
 	}
+
+	private void LoadPlayerStats() {
+		if (!File.Exists(SaveSystem.GetPlayerSavePath())) {
+			SaveSystem.SavePlayer(3, 5, 0.2f); //default player stats
+		}
+
+		PlayerData player = SaveSystem.LoadPlayer();
+		
+		startingHealth = player.health;
+		health = startingHealth;
+
+		speed = player.speed;
+		gameObject.SendMessage("SetSpeed", speed);
+		
+		rateOfFire = player.rateOfFire;
+		gameObject.SendMessage("SetROF", rateOfFire);
+	}
+
+	private void SavePlayerStats() {
+		SaveSystem.SavePlayer(health, speed, rateOfFire);
+	}
+
+	private void DeletePlayerStats() {
+		SaveSystem.DeletePlayer();
+	}
+	
 
 	private void DamagePlayer(int amount) {
 		anime.SetTrigger("Hit");

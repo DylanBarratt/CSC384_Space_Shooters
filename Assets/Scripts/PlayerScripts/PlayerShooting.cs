@@ -6,15 +6,18 @@ using UnityEngine;
 public class PlayerShooting : MonoBehaviour {
     [SerializeField] private Transform gunLoc;
     [SerializeField] private GameObject bulletPrefab;
-
-    //these consts are attributes that should be able to be changed with player upgrades
-    private const float RATE_OF_FIRE = 0.2f; 
+    
+    private  float rateOfFire = 0.1f;  //default
 
     private bool shoot;
     private float lastShotTime;
 
     private void Start() {
         lastShotTime = 0;
+    }
+
+    private void SetROF(float val) {
+        rateOfFire = val;
     }
 
     private void Update() {
@@ -30,7 +33,7 @@ public class PlayerShooting : MonoBehaviour {
     private void FixedUpdate() {
         if (shoot && lastShotTime <= 0){
             Shoot();
-            lastShotTime = RATE_OF_FIRE;
+            lastShotTime = rateOfFire;
         }
 
         if (lastShotTime > 0) {

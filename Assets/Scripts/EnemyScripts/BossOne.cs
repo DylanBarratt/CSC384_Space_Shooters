@@ -39,6 +39,9 @@ public class BossOne : MonoBehaviour {
 		
 		gameManager.SendMessage("AddMonies", 20);
 		
+		Debug.Log("Boss Defeated yo");
+		Destroy(gameObject);
+		
 		// asteroidSpawner.SendMessage("CanSpawn", true); //TODO: spawn asteroids again. after shop?
 	}
 }

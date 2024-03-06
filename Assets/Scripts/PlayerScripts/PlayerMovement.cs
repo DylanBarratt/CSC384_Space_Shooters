@@ -6,16 +6,20 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour {
     private Rigidbody2D rb;
     private Animator anime;
-    
+
+    private float speed = 1;
     private float horizontal;
     private float vertical;
 
-    private const float SPEED = 7.0f;
     private const float MOVE_LIMITER = 0.7f;
-
+    
     private void Start() {
         rb = GetComponent<Rigidbody2D>();
         anime = GetComponent<Animator>();
+    }
+
+    private void SetSpeed(float val) {
+        speed = val;
     }
 
     private void Update() {
@@ -34,6 +38,6 @@ public class PlayerMovement : MonoBehaviour {
             vertical *= MOVE_LIMITER;
         }
 
-        rb.velocity = new Vector2(horizontal * SPEED, vertical * SPEED);
+        rb.velocity = new Vector2(horizontal * speed, vertical * speed);
     }
 }
