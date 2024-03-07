@@ -70,6 +70,12 @@ public class Player : MonoBehaviour {
 	
 	private void AddROF(int amnt) {
 		rateOfFire += amnt;
+
+		if (rateOfFire <= 0) {
+			Debug.Log("TOO MUCH POWEWEERR");
+			return;
+		} 
+		
 		gameObject.SendMessage("SetROF", rateOfFire);
 		SavePlayerStats();
 	}

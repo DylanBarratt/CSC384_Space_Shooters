@@ -9,9 +9,14 @@ public class GameManager : MonoBehaviour {
     [SerializeField] private GameObject HUD;
     [SerializeField] private GameObject Starz;
 
+    
+    private int NUM_LEVELS = 4;
+    private int lvlID;
+    
     private void Start() {
+        lvlID = 1;
         //TODO: check if tutorial has been done, if not load tut instead
-        StartLevel(1);
+        StartLevel();
     }
 
     //0 tut, lvls 1 - 4
@@ -33,8 +38,20 @@ public class GameManager : MonoBehaviour {
         { 1, 1, 0, 0, 0 }, 
         { 1, 1, 0, 0, 0 }, 
     };
+    
+    private void NextLevel() {
+        lvlID++;
+        Debug.Log("Moving to level " + lvlID);
+		
+        if (lvlID > NUM_LEVELS) {
+            EndGame();
+            return;
+        }
+		
+        StartLevel();
+    }
 
-    private void StartLevel(int lvlID) {
+    private void StartLevel() {
         int[] curLvl = {
             lvlID,
             LEVEL_SPAWN_AMOUNTS[lvlID, 0], 
@@ -50,6 +67,7 @@ public class GameManager : MonoBehaviour {
 
     private void EndGame() {
         //TODO: maybe save stats here?
+        Debug.Log("GGs bro"); //TODO: implement end game here
         SceneManager.LoadScene("Menu");
     }
 }

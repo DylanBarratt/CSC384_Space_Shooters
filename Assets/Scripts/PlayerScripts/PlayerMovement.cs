@@ -13,9 +13,12 @@ public class PlayerMovement : MonoBehaviour {
 
     private const float MOVE_LIMITER = 0.7f;
     
+    private Vector2 START_POS = new Vector2(0f, -4.5f);
+    
     private void Start() {
         rb = GetComponent<Rigidbody2D>();
         anime = GetComponent<Animator>();
+        ResetLoc();
     }
 
     private void SetSpeed(float val) {
@@ -39,5 +42,9 @@ public class PlayerMovement : MonoBehaviour {
         }
 
         rb.velocity = new Vector2(horizontal * speed, vertical * speed);
+    }
+
+    private void ResetLoc() {
+        transform.position = START_POS;
     }
 }

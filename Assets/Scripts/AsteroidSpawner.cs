@@ -42,6 +42,10 @@ public class AsteroidSpawner : MonoBehaviour {
 
 	private void CanSpawn(bool spawn) {
 		shouldSpawn = spawn;
+
+		if (shouldSpawn) {
+			SpawnAsteroids();
+		}
 	}
 
 	//TODO: FOR TESTING ONLY!!

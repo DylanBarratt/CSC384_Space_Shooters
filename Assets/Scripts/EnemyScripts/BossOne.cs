@@ -10,23 +10,35 @@ public class BossOne : MonoBehaviour {
 
 	// private float health = 5; //number of minis
 	private float health = 1; //TODO: dlete dev halp
+	private float startingHealth;
+
 	
 	private void Start() {
+		startingHealth = health;
+		
 		gameManager = GameObject.Find("GameManager");
 		UIGameObject = GameObject.Find("GameManager/HUD_UI");
 		asteroidSpawner = GameObject.Find("GameManager/AsteroidSpawner");
 
 		asteroidSpawner.SendMessage("CanSpawn", false);
+		
+		UpdateHealthBar();
 	}
 
 	private void MiniKilled() {
 		health--;
+		
 
-		UIGameObject.SendMessage("UpdateBossHealth", health * 2 * 10);
-
+		UpdateHealthBar();
+		
 		if (health == 0) {
 			Ded();
 		}
+	}
+
+	private void UpdateHealthBar() {
+		UIGameObject.SendMessage("UpdateBossHealth", (health / startingHealth) * 100);
+
 	}
 
 	private void Ded() {

@@ -10,8 +10,6 @@ public class EnemySpawner : MonoBehaviour {
 	[SerializeField] private Transform[] spawnPoints;
 	[SerializeField] private GameObject gameManager;
 	[SerializeField] private GameObject bossSpawner;
-
-	private int NUM_LEVELS = 4;
 	
 	private List<int> noEmptyNumEnemies;
 	private int[] numEnemies = new int[4];
@@ -83,22 +81,11 @@ public class EnemySpawner : MonoBehaviour {
 
 		if (AllSpawned() && enemiesAlive == 0) {
 			CancelInvoke();
-			Debug.Log("Boss time baby"); //TODO: currently circumventing da boss
+			Debug.Log("Boss time baby");
+			Debug.Log(lvlID);
 			bossSpawner.SendMessage("SpawnBoss", lvlID);
 			// NextLevel(); //TODO: should be called after boss has died instead
 		}
-	}
-
-	private void NextLevel() {
-		int nextLvlID = lvlID++;
-		Debug.Log("Moving to level " + nextLvlID);
-		
-		if (nextLvlID > NUM_LEVELS) {
-			Debug.Log("GGs bro"); //TODO: implement end game here
-			return;
-		}
-		
-		gameManager.SendMessage("StartLevel", nextLvlID);
 	}
 
 	private bool CanSpawn(int index) {

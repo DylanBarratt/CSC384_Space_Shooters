@@ -141,7 +141,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4570393213259165961, guid: 2bcfc8f5287c75a4995cb349359fc893, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4.99
+      value: -4.5
       objectReference: {fileID: 0}
     - target: {fileID: 4570393213259165961, guid: 2bcfc8f5287c75a4995cb349359fc893, type: 3}
       propertyPath: m_LocalPosition.z
@@ -906,6 +906,7 @@ MonoBehaviour:
   healthUpPrefab: {fileID: 87824053399660021, guid: aa7e52873b971ae7ba94f5fe16b75831, type: 3}
   speedUpPrefab: {fileID: 430500170949720097, guid: 05ee921008680d0b6bf35469c2abb239, type: 3}
   rofUpPrefab: {fileID: 8206345976389221447, guid: 0330521b699837f20b964f71fd999704, type: 3}
+  exitShopPrefab: {fileID: 5104559621933665651, guid: af7190e425b40d237bed3f45585be4dd, type: 3}
 --- !u!1 &1924368214 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1610715736012720753, guid: 7c96d596b0dd098499d8c07ed93f46cc, type: 3}
