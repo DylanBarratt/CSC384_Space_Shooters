@@ -290,7 +290,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5448fac9f699beba9a273112b18a8aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bossess:
+  bosses:
+  - {fileID: 4415700656985320365, guid: 8ac4f4528dc97dc67817d8172273952e, type: 3}
+  - {fileID: 4415700656985320365, guid: 8ac4f4528dc97dc67817d8172273952e, type: 3}
+  - {fileID: 4415700656985320365, guid: 8ac4f4528dc97dc67817d8172273952e, type: 3}
   - {fileID: 4415700656985320365, guid: 8ac4f4528dc97dc67817d8172273952e, type: 3}
 --- !u!1 &456561017
 GameObject:
