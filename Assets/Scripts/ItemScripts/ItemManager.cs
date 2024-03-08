@@ -9,10 +9,6 @@ public class ItemManager : MonoBehaviour {
 	private GameObject asteroidSpawner;
 	private GameObject player;
 	
-	[SerializeField] private GameObject healthUpPrefab;
-	[SerializeField] private GameObject speedUpPrefab;
-	[SerializeField] private GameObject rofUpPrefab;
-	[SerializeField] private GameObject exitShopPrefab;
 	
 	private List<GameObject> items  = new List<GameObject>();
 
@@ -54,22 +50,20 @@ public class ItemManager : MonoBehaviour {
 		Debug.Log("Goodbye mein sirt");
 	}
 
+	// health, speed, rof
+	[SerializeField] private GameObject[] prefabs;
+	private int[,] itemVals = {{20, 1},  {40, 2}, {60, 1}};
+
 	private void SpawnItems() {
-		GameObject instance = Instantiate(healthUpPrefab);
-		
-		//id, cost, value
-		instance.SendMessage("InitItem", new [] {0, 10, 1});  //TODO: should this be set based on level?
-		items.Add(instance);
+		GameObject instance;
+		for (int i = 0; i < 3; i++) {
+			instance = Instantiate(prefabs[i]);
+			//id, cost, value
+			instance.SendMessage("InitItem", new [] {i, itemVals[i, 0], itemVals[i, 1]});  //TODO: should this be set based on level?
+			items.Add(instance);
+		}
 
-		instance = Instantiate(speedUpPrefab);
-		instance.SendMessage("InitItem", new [] {1, 10, 2});
-		items.Add(instance);
-
-		instance = Instantiate(rofUpPrefab);
-		instance.SendMessage("InitItem", new [] {2, 10, 3});
-		items.Add(instance);
-
-		instance = Instantiate(exitShopPrefab);
+		instance = Instantiate(prefabs[prefabs.Length-1]);
 		items.Add(instance);
 	}
 

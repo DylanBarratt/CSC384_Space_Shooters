@@ -18,6 +18,8 @@ public class Player : MonoBehaviour {
 
 	private float speed;
 	private float rateOfFire;
+	private float intialSpeed = 4f;
+	private float initialROF = 0.2f;
 
 	private bool ded;
 
@@ -33,7 +35,7 @@ public class Player : MonoBehaviour {
 
 	private void LoadPlayerStats() {
 		if (!File.Exists(SaveSystem.GetPlayerSavePath())) {
-			SaveSystem.SavePlayer(initialHealth, 5, 0.2f); //default player stats
+			SaveSystem.SavePlayer(initialHealth, intialSpeed, initialROF); //default player stats
 		}
 
 		PlayerData player = SaveSystem.LoadPlayer();
@@ -51,6 +53,11 @@ public class Player : MonoBehaviour {
 	private void AddHealth(int amnt) {
 		health = fullHealthAmnt; //heal player
 		health += amnt;
+
+		if (health >= 13) {
+			Debug.Log("TOOO HEALTHY DUD");
+			return;
+		}
 		
 		fullHealthAmnt = health;
 		UpdateHealth();
@@ -64,6 +71,12 @@ public class Player : MonoBehaviour {
 	
 	private void AddSpeed(int amnt) {
 		speed += amnt;
+
+		if (speed > 24) {
+			Debug.Log("TOOO MUCH SPEEEED!!");
+			return;
+		}
+		
 		gameObject.SendMessage("SetSpeed", speed);
 		SavePlayerStats();
 	}
@@ -71,7 +84,7 @@ public class Player : MonoBehaviour {
 	private void AddROF(int amnt) {
 		rateOfFire += amnt;
 
-		if (rateOfFire <= 0) {
+		if (rateOfFire <= 0.1f) {
 			Debug.Log("TOO MUCH POWEWEERR");
 			return;
 		} 

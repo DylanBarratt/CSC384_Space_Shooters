@@ -5,6 +5,8 @@ using UnityEngine;
 using UnityEngine.UIElements;
 
 public class HUD : MonoBehaviour {
+	private GameObject player;
+	
 	private VisualElement root;
 	private Label monies;
 	private ProgressBar health;
@@ -17,6 +19,9 @@ public class HUD : MonoBehaviour {
 		health = root.Q<ProgressBar>("HealthBar");
 		bossHealth = root.Q<ProgressBar>("BossBar");
 		healthTxt = root.Q<Label>("HealthBarTxt");
+		player = GameObject.Find("Player");
+		
+		player.SendMessage("UpdateHealth"); //load correct value
 	}
 	
 	private void UpdateHealth(float val) {
