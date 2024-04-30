@@ -20,20 +20,20 @@ public class EnemySpawner : MonoBehaviour {
 	private int lvlID;
 
 	//health, speed, value
-	// private float[,] enemyStats = {
-	// 	{3, 1.5f, 1}, //e1
-	// 	{5, 1f, 2}, //e2
-	// 	{2, 4f, 3}, //e3
-	// 	{3, 8, 4}, //e4 TODO: maybe this could match the players health!?!
-	// };
-	//
-	//TODO: delete testing vals!!!!!
 	private float[,] enemyStats = {
-		{1, 1.5f, 1}, //e1
-		{1, 1f, 2}, //e2
-		{1, 4f, 3}, //e3
-		{1, 8, 4}, //e4
+		{3, 1.5f, 1}, //e1
+		{5, 1f, 2}, //e2
+		{2, 4f, 3}, //e3
+		{3, 8, 4}, //e4 TODO: maybe this could match the players health!?!
 	};
+	
+	// //TODO: delete testing vals!!!!!
+	// private float[,] enemyStats = {
+	// 	{1, 1.5f, 1}, //e1
+	// 	{1, 1f, 2}, //e2
+	// 	{1, 4f, 3}, //e3
+	// 	{1, 8, 4}, //e4
+	// };
 
 	private Transform lastSpawnLoc;
 	

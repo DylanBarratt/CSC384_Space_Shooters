@@ -16,12 +16,31 @@ public class ItemManager : MonoBehaviour {
 	
 	private int loopMonies = 0;
 
+	private int[,] itemVals = new int [3, 3];
 	private void Start() {
 		asteroidSpawner = GameObject.Find("GameManager/AsteroidSpawner");
 		player = GameObject.Find("Player");
+		SetItemVals(1);
 	}
 
-	private void OpenShop() {
+	private void SetItemVals(int lvl) {
+		//health
+		itemVals[0,0] =  20 * lvl; //cost
+		itemVals[0,1] =  1; //value
+		
+		//speed
+		itemVals[1,0] =  30 * lvl; //cost
+		itemVals[1,1] =  2; //value
+		
+		//rof
+		itemVals[2,0] =  100 / lvl; //cost
+		itemVals[2,1] =  1; //value
+	}
+
+	private void OpenShop(int lvl) {
+		SetItemVals(lvl);
+		
+		
 		items = new List<GameObject>();
 		
 		if (player != null) {
@@ -50,9 +69,8 @@ public class ItemManager : MonoBehaviour {
 		Debug.Log("Goodbye mein sirt");
 	}
 
-	// health, speed, rof
+	
 	[SerializeField] private GameObject[] prefabs;
-	private int[,] itemVals = {{20, 1},  {40, 2}, {60, 1}};
 
 	private void SpawnItems() {
 		GameObject instance;

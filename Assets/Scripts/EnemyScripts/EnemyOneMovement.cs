@@ -11,7 +11,7 @@ public class EnemyOneMovement : MonoBehaviour {
 		rb = GetComponent<Rigidbody2D>();
 		
 		gameObject.SendMessage("Shoot"); // begins the enemy shooting loop
-		Invoke(nameof(XPatrol), 0.01f);
+		Invoke(nameof(XPatrol), 0.01f); //idk why I did this lol
 	}
 	
 	private void XPatrol() {

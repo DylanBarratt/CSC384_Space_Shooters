@@ -8,8 +8,8 @@ public class BossOne : MonoBehaviour {
 	private GameObject UIGameObject;
 	private GameObject gameManager;
 
-	// private float health = 5; //number of minis
-	private float health = 1; //TODO: dlete dev halp
+	private float health = 5; //number of minis
+	// private float health = 1; //TODO: dlete dev halp
 	private float startingHealth;
 
 	
@@ -52,7 +52,7 @@ public class BossOne : MonoBehaviour {
 		
 		gameManager.SendMessage("AddMonies", 20);
 		
-		gameManager.SendMessage("OpenShop");
+		gameManager.SendMessage("OpenShop", 1);
 		Destroy(gameObject);
 	}
 }
