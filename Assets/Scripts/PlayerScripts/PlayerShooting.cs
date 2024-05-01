@@ -7,13 +7,15 @@ public class PlayerShooting : MonoBehaviour {
     [SerializeField] private Transform gunLoc;
     [SerializeField] private GameObject bulletPrefab;
     
-    private  float rateOfFire = 0.1f;  //default
+    private  float rateOfFire = 0.2f;  //default
 
-    private bool shoot;
+    private bool shoot, canShoot;
     private float lastShotTime;
+    
 
     private void Start() {
         lastShotTime = 0;
+        canShoot = true;
     }
 
     private void SetROF(float val) {
@@ -21,12 +23,14 @@ public class PlayerShooting : MonoBehaviour {
     }
 
     private void Update() {
-        if (Input.GetButtonDown("Fire1")){
-            shoot = true ;
-        }
+        if (canShoot) {
+            if (Input.GetButtonDown("Fire1")){
+                shoot = true ;
+            }
 
-        if (Input.GetButtonUp("Fire1")){
-            shoot = false;
+            if (Input.GetButtonUp("Fire1")){
+                shoot = false;
+            }
         }
     }
 
@@ -43,5 +47,9 @@ public class PlayerShooting : MonoBehaviour {
 
     private void Shoot() {
         Instantiate(bulletPrefab, gunLoc.position, Quaternion.identity);
+    }
+
+    private void SetCanShoot(bool val) {
+        canShoot = val;
     }
 }

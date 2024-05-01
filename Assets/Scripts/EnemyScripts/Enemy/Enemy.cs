@@ -14,8 +14,8 @@ public class Enemy : MonoBehaviour {
 		value = vals[2];
 
 		//if not boss enemy
-		if (value != 0 && speed != 0) {
-			gameObject.SendMessage("Move", speed);
+		if (speed != 0 && value != 0) {
+			gameObject.SendMessage("Move", speed);			
 			gameObject.SendMessage("SetValue", value);
 		}
 

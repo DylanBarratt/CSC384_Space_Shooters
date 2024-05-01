@@ -14,9 +14,17 @@ public class MainMenuUI : MonoBehaviour {
 		optionsBtn = root.Q<Button>("Options");
 		exitBtn = root.Q<Button>("Exit");
 		
-		startBtn.clicked += () => ChangeScene("Main");
+		startBtn.clicked += () => StartGame();
 		optionsBtn.clicked += () => ChangeScene("Options");
 		exitBtn.clicked += () => Exit();
+	}
+
+	private void StartGame() {
+		if (SaveSystem.IsTutorialComplete()) {
+			ChangeScene("Main");
+		} else {
+			ChangeScene("Tut");
+		}
 	}
 
 	private void ChangeScene(string index) {

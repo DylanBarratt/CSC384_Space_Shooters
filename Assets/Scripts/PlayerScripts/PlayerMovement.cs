@@ -7,9 +7,9 @@ public class PlayerMovement : MonoBehaviour {
     private Rigidbody2D rb;
     private Animator anime;
 
-    private float speed = 1;
-    private float horizontal;
-    private float vertical;
+    private float speed = 4f, horizontal, vertical;
+
+    private bool canHorizontal, canVertical;
 
     private const float MOVE_LIMITER = 0.7f;
     
@@ -18,6 +18,10 @@ public class PlayerMovement : MonoBehaviour {
     private void Start() {
         rb = GetComponent<Rigidbody2D>();
         anime = GetComponent<Animator>();
+        
+        canHorizontal = true;
+        canVertical = true;
+        
         ResetLoc();
     }
 
@@ -25,12 +29,24 @@ public class PlayerMovement : MonoBehaviour {
         speed = val;
     }
 
-    private void Update() {
-        horizontal = Input.GetAxisRaw("Horizontal");
-        vertical = Input.GetAxisRaw("Vertical");
+    private void ToggleHorizontal(bool val) {
+        canHorizontal = val;
+    }
 
-        anime.SetFloat("xVel", horizontal);
-        anime.SetFloat("yVel", vertical);
+    private void ToggleVertical(bool val) {
+        canVertical = val;
+    }
+    
+    private void Update() {
+        if (canHorizontal) {
+            horizontal = Input.GetAxisRaw("Horizontal");
+            anime.SetFloat("xVel", horizontal);
+        }
+
+        if (canVertical) {
+            vertical = Input.GetAxisRaw("Vertical");
+            anime.SetFloat("yVel", vertical);
+        }
     }
 
     private void FixedUpdate() {

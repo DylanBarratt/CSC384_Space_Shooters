@@ -113,7 +113,7 @@ public class Player : MonoBehaviour {
 		}
 	}
 
-	private void KillPlayer() { //health 0 checking doesnt happen here so that a player can be killed regardless of health
+	private void KillPlayer() { //health 0 checking doesn't happen here so that a player can be killed regardless of health
 		Destroy(GetComponent<Rigidbody2D>());
 		Destroy(GetComponent<CapsuleCollider2D>());
 		
