@@ -82,7 +82,7 @@ public class Tutorial : MonoBehaviour {
 		} else if (deadCount == 2) {
 			SaveSystem.SetTutorialComplete(true);
 			Debug.Log(SaveSystem.IsTutorialComplete());
-			SceneManager.LoadScene("Main");
+			SceneManager.LoadScene("Menu");
 		}
 	}
 

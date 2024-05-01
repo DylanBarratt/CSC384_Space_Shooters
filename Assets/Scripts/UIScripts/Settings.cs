@@ -5,18 +5,21 @@ using UnityEngine.SceneManagement;
 
 public class Settings : MonoBehaviour {
 	private VisualElement root;
-	private Button backBtn, delBtn;
+	private Button backBtn, tutBtn, delBtn;
 	private Toggle fpsToggle, ezToggle;
 	
 	private void Start() {
 		root = gameObject.GetComponent<UIDocument>().rootVisualElement;
 		backBtn = root.Q<Button>("Back");
+		tutBtn = root.Q<Button>("TutorialBtn");
 		delBtn = root.Q<Button>("DeleteSave");
 		fpsToggle = root.Q<Toggle>("Fps");
 		ezToggle = root.Q<Toggle>("Ez");
 		
 		backBtn.clicked += () => SceneManager.LoadScene("Menu");
+		tutBtn.clicked += () => SceneManager.LoadScene("Tut");
 		delBtn.clicked += () => DeleteSave();
+		
 			
 		//get rid of stupid blue text...
 		fpsToggle.focusable = false;
