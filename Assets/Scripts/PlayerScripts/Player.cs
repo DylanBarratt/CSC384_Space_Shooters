@@ -29,7 +29,6 @@ public class Player : MonoBehaviour {
 		anime = GetComponent<Animator>();
 		pl = GetComponent<PlayerMovement>();
 		
-		DeletePlayerStats(); //TODO: remove (dev)
 		LoadPlayerStats();
 	}
 

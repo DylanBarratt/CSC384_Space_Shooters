@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class Settings : MonoBehaviour {
 	private VisualElement root;
-	private Button backBtn;
+	private Button backBtn, delBtn;
 	private Toggle fpsToggle, ezToggle;
 	private string filePath; 
 	
@@ -14,11 +14,13 @@ public class Settings : MonoBehaviour {
 		
 		root = gameObject.GetComponent<UIDocument>().rootVisualElement;
 		backBtn = root.Q<Button>("Back");
+		delBtn = root.Q<Button>("DeleteSave");
 		fpsToggle = root.Q<Toggle>("Fps");
 		ezToggle = root.Q<Toggle>("Ez");
 		
 		backBtn.clicked += () => SceneManager.LoadScene("Menu");
-
+		delBtn.clicked += () => DeleteSave();
+			
 		//get rid of stupid blue text...
 		fpsToggle.focusable = false;
 		ezToggle.focusable = false;
@@ -57,5 +59,10 @@ public class Settings : MonoBehaviour {
 		string[] values = { fpsToggle.value.ToString(), ezToggle.value.ToString() };
 		File.WriteAllLines(filePath, values);
 		SendMessage("ShowFpsUpdate");
+	}
+
+	private void DeleteSave() {
+		SaveSystem.DeletePlayer();
+		Debug.Log("Player deleted!");
 	}
 }
