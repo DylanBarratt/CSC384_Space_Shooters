@@ -7,11 +7,8 @@ public class Settings : MonoBehaviour {
 	private VisualElement root;
 	private Button backBtn, delBtn;
 	private Toggle fpsToggle, ezToggle;
-	private string filePath; 
 	
 	private void Start() {
-		filePath = Application.persistentDataPath + "/settings.txt";
-		
 		root = gameObject.GetComponent<UIDocument>().rootVisualElement;
 		backBtn = root.Q<Button>("Back");
 		delBtn = root.Q<Button>("DeleteSave");
@@ -32,13 +29,9 @@ public class Settings : MonoBehaviour {
 	}
 
 	private void LoadToggleValues() {
-		if (File.Exists(filePath)) {
-			string[] savedValues = File.ReadAllLines(filePath);
-			if (savedValues.Length >= 2) {
-				fpsToggle.value = bool.Parse(savedValues[0]);
-				ezToggle.value = bool.Parse(savedValues[1]);
-			}
-		}
+		SettingsData data = SaveSystem.LoadSettings();
+		fpsToggle.value = data.showFps;
+		ezToggle.value = data.ezMode;
 	}
 
 	private void ToggleFps(ChangeEvent<bool> evt) {
@@ -56,8 +49,7 @@ public class Settings : MonoBehaviour {
 	}
 	
 	private void SaveToggleValues() {
-		string[] values = { fpsToggle.value.ToString(), ezToggle.value.ToString() };
-		File.WriteAllLines(filePath, values);
+		SaveSystem.SaveSettings(fpsToggle.value, ezToggle.value);
 		SendMessage("ShowFpsUpdate");
 	}
 

@@ -26,14 +26,7 @@ public class GameManager : MonoBehaviour {
     }
 
     private void SetSpawnAmounts() {
-        string filePath = Application.persistentDataPath + "/settings.txt";
-        bool ezMode = false;
-        if (File.Exists(filePath)) {
-            string[] savedValues = File.ReadAllLines(filePath);
-            if (savedValues.Length >= 2) {
-                ezMode = bool.Parse(savedValues[1]);
-            }
-        }
+        bool ezMode = SaveSystem.LoadSettings().ezMode;
         
         if (!ezMode) { //normal
             //spawn_delay, e1, e2, e3, e4

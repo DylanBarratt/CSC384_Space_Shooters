@@ -33,12 +33,7 @@ public class Fps : MonoBehaviour {
 	}
 
 	private void ShowFpsUpdate() {
-		filePath = Application.persistentDataPath + "/settings.txt";
-
-		if (File.Exists(filePath)) {
-			string[] savedValues = File.ReadAllLines(filePath);
-			fpsEnabled = bool.Parse(savedValues[0]);
-		}
+		fpsEnabled = SaveSystem.LoadSettings().showFps;
 	}
 
 }
