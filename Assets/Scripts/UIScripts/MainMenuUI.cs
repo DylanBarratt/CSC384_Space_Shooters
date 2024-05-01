@@ -32,6 +32,7 @@ public class MainMenuUI : MonoBehaviour {
 	}
 
 	private void Exit() {
+		Debug.Log("Goodbye :)");
 		Application.Quit();
 	}
 }

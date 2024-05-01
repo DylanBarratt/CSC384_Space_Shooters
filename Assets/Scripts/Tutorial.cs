@@ -94,6 +94,6 @@ public class Tutorial : MonoBehaviour {
 	private void RealEnemy() {
 		GameObject eObj = Instantiate(e2);
 		eObj.SetActive(true);
-		eObj.SendMessage("EnemyInit", new float[] {5, 2, 0});
+		eObj.SendMessage("EnemyInit", new EnemyData(5, 2, 0));
 	}
 } 

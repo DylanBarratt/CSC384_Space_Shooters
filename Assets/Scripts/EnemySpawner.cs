@@ -13,51 +13,38 @@ public class EnemySpawner : MonoBehaviour {
 	
 	private List<int> noEmptyNumEnemies;
 	private int[] numEnemies = new int[4];
-	private int frequency;
 	private int enemiesAlive;
 	private int e4Count;
 	private int maxEnemies;
-	private int lvlID;
 
-	//health, speed, value
-	private float[,] enemyStats = {
-		{3, 1.5f, 1}, //e1
-		{5, 1f, 2}, //e2
-		{2, 4f, 3}, //e3
-		{3, 8, 4}, //e4 TODO: maybe this could match the players health!?!
+
+	private LevelData lvlData;
+
+	private EnemyData[] enemyStats = {
+		new (3, 1.5f, 1),
+		new (5, 1f, 2),
+		new (2, 4f, 3),
+		new (3, 8, 4)
 	};
-	
-	// //TODO: delete testing vals!!!!!
-	// private float[,] enemyStats = {
-	// 	{1, 1.5f, 1}, //e1
-	// 	{1, 1f, 2}, //e2
-	// 	{1, 4f, 3}, //e3
-	// 	{1, 8, 4}, //e4
-	// };
 
 	private Transform lastSpawnLoc;
 	
 	public void EnemyDestroyed(int eValue) { 
 		//felt like this was a weird (probably non-optimal) but slightly clever way of determining if the enemy killed was e4 :) - Dylan
-		if (eValue == enemyStats[3, 2]) { 
+		if (eValue == enemyStats[3].value) { 
 			e4Count--;
 		}
 		
 		enemiesAlive--;
 	}
 
-	public void EnemySpawnInit(int[] spawnAmount) {
-		if (spawnAmount.Length < 5) {
-			Debug.LogError("Enemy spawn data too short...");
-		}
-
-		lvlID = spawnAmount[0];
-		frequency = spawnAmount[1];
+	public void EnemySpawnInit(LevelData spawnAmount) {
+		lvlData = new LevelData(spawnAmount.lvlId, spawnAmount.spawnDelay, spawnAmount.e1, spawnAmount.e2, spawnAmount.e3, spawnAmount.e4);
 		
-		numEnemies[0] = spawnAmount[2];
-		numEnemies[1] = spawnAmount[3];
-		numEnemies[2] = spawnAmount[4];
-		numEnemies[3] = spawnAmount[5];
+		numEnemies[0] = lvlData.e1;
+		numEnemies[1] = lvlData.e2;
+		numEnemies[2] = lvlData.e3;
+		numEnemies[3] = lvlData.e4;
 		
 		lastSpawnLoc = spawnPoints[0];
 		enemiesAlive = 0;
@@ -70,7 +57,7 @@ public class EnemySpawner : MonoBehaviour {
 	//spawn all types of an enemy before moving to the next
 	//once all enemies spawned call boss!!
 	private void Spawn() {
-		Invoke(nameof(Spawn), frequency);
+		Invoke(nameof(Spawn), lvlData.spawnDelay);
 		
 		for (int i = 0; i < numEnemies.Length; i++) {
 			if (CanSpawn(i)) {
@@ -82,8 +69,8 @@ public class EnemySpawner : MonoBehaviour {
 		if (AllSpawned() && enemiesAlive == 0) {
 			CancelInvoke();
 			Debug.Log("Boss time baby");
-			Debug.Log(lvlID);
-			bossSpawner.SendMessage("SpawnBoss", lvlID);
+			Debug.Log(lvlData.lvlId);
+			bossSpawner.SendMessage("SpawnBoss", lvlData.lvlId);
 			// NextLevel(); //TODO: should be called after boss has died instead
 		}
 	}
@@ -124,9 +111,8 @@ public class EnemySpawner : MonoBehaviour {
 		Transform spawnLoc = RandomFromList(availableSpawnLocs);
 				
 		GameObject e = Instantiate(enemies[index], spawnLoc.position, enemies[index].transform.rotation);
-							//health, speed, value
-		float[] eVals = {enemyStats[index, 0], enemyStats[index, 1], enemyStats[index, 2]};
-		e.SendMessage("EnemyInit", eVals);
+		
+		e.SendMessage("EnemyInit", enemyStats[index]);
 				
 		numEnemies[index]--;
 		

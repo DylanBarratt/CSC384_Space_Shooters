@@ -18,7 +18,7 @@ public class EnemyMovement : MonoBehaviour {
 		float screenTop = Camera.main.ScreenToWorldPoint(new Vector2(0, Screen.height)).y;
 		targetY = Random.Range(0, screenTop / 1.5f);
 
-		rb.velocity = new Vector2(0, -(speed * 1.5f));
+		rb.velocity = new Vector2(0, -(speed * 2.5f));
 		
 		Invoke(nameof(YPosCheck), moveDelay);
 	}

@@ -9,15 +9,13 @@ public class GameManager : MonoBehaviour {
     [SerializeField] private GameObject EnemySpawner;
     [SerializeField] private GameObject HUD;
     [SerializeField] private GameObject Starz;
-
     
-    private int NUM_LEVELS = 4;
     private int lvlID;
     
-    private int[,] LEVEL_SPAWN_AMOUNTS;
+    private LevelData[] LEVEL_SPAWN_AMOUNTS;
     
     private void Start() {
-        lvlID = 1;
+        lvlID = 0;
         
         SetSpawnAmounts();
         
@@ -29,23 +27,19 @@ public class GameManager : MonoBehaviour {
         bool ezMode = SaveSystem.LoadSettings().ezMode;
         
         if (!ezMode) { //normal
-            //spawn_delay, e1, e2, e3, e4
-            LEVEL_SPAWN_AMOUNTS = new [,] {
-                { 1, 1, 0, 0, 0 }, 
-                { 4, 10, 3, 0, 0},
-                { 3, 5, 5, 3, 0},
-                { 2, 3, 3, 15, 0},
-                { 1, 3, 3, 5, 3},
+            LEVEL_SPAWN_AMOUNTS = new LevelData [] {
+                new (0,  2f, 5, 3, 0, 0),
+                new (1,  1.5f, 3, 5, 3, 0),
+                new (2,  1f, 3, 3, 7, 0),
+                new (3,  0.5f, 3, 3, 5, 3),
             };
         } else { //easy
             Debug.Log("EASY MODE NOOOOOB");
-            //spawn_delay, e1, e2, e3, e4
-            LEVEL_SPAWN_AMOUNTS = new [,] {
-                { 1, 1, 0, 0, 0 }, 
-                { 1, 1, 1, 0, 0 }, 
-                { 1, 0, 1, 1, 0 }, 
-                { 1, 1, 1, 1, 0 }, 
-                { 1, 1, 1, 1, 1 }, 
+            LEVEL_SPAWN_AMOUNTS = new LevelData [] {
+                new (0,  1, 1, 1, 0, 0 ), 
+                new (1,  1, 0, 1, 1, 0 ), 
+                new (2,  1, 1, 1, 1, 0 ), 
+                new (3,  1, 1, 1, 1, 1 ), 
             };
         }
     }
@@ -53,8 +47,9 @@ public class GameManager : MonoBehaviour {
     private void NextLevel() {
         lvlID++;
         Debug.Log("Moving to level " + lvlID);
+        Debug.Log(LEVEL_SPAWN_AMOUNTS.Length);
 		
-        if (lvlID > NUM_LEVELS) {
+        if (lvlID == LEVEL_SPAWN_AMOUNTS.Length) {
             EndGame();
             return;
         }
@@ -63,14 +58,7 @@ public class GameManager : MonoBehaviour {
     }
 
     private void StartLevel() {
-        int[] curLvl = {
-            lvlID,
-            LEVEL_SPAWN_AMOUNTS[lvlID, 0], 
-            LEVEL_SPAWN_AMOUNTS[lvlID, 1], 
-            LEVEL_SPAWN_AMOUNTS[lvlID, 2], 
-            LEVEL_SPAWN_AMOUNTS[lvlID, 3], 
-            LEVEL_SPAWN_AMOUNTS[lvlID, 4]
-        };
+        LevelData curLvl = LEVEL_SPAWN_AMOUNTS[lvlID];
         
         EnemySpawner.SendMessage("EnemySpawnInit", curLvl);
         Starz.SendMessage("SetSpeed", ((float)lvlID / 2 + 1) / 10);

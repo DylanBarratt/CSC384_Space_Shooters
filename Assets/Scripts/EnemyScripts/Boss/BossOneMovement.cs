@@ -8,7 +8,7 @@ public class BossOneMovement : MonoBehaviour {
 	private GameObject UIGameObject;
 	private GameObject Starz;
 
-	private float[] vals = { 7, 0, 0 };
+	private EnemyData vals = new EnemyData(7, 0, 0);
 	private float speed = 1.5f;
 
 	private bool yReach;

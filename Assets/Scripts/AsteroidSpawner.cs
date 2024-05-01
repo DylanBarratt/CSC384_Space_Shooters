@@ -7,7 +7,7 @@ using Random = UnityEngine.Random;
 public class AsteroidSpawner : MonoBehaviour {
 	[SerializeField] private GameObject asteriod;
 	
-	private int asteroidInterval;
+	private float asteroidInterval;
 	private int screenWidth = 720;
 
 	private float xPos = 0f;
@@ -18,7 +18,7 @@ public class AsteroidSpawner : MonoBehaviour {
 	private bool shouldSpawn = true;
 
 	private void Start() {
-		asteroidInterval = 5;
+		asteroidInterval = 1.5f;
 
 		yPos = transform.position.y;
 		xSpawnRange = Camera.main.ScreenToWorldPoint(new Vector2(screenWidth, 0)).x;

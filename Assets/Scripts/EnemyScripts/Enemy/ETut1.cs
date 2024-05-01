@@ -8,17 +8,15 @@ public class ETut1 : MonoBehaviour {
 	[SerializeField] private GameObject tutObj;
 	
 	private bool initiated = false;
-	private float health = 7, speed;
+	private EnemyData stats;
 	
 	private Animator anime;
 	
-	public void EnemyInit(float[] vals) {
-		health = vals[0];
-		speed = vals[1];
-
+	public void EnemyInit(EnemyData vals) {
+		stats = vals;
 		
-		if (speed != 0) {
-			gameObject.SendMessage("Move", speed);
+		if (stats.speed != 0) {
+			gameObject.SendMessage("Move", stats.speed);
 		}
 		initiated = true;
 	}
@@ -34,9 +32,9 @@ public class ETut1 : MonoBehaviour {
 	private void Damage(int amount) {
 		if (!initiated) return;
 
-		health -= amount;
+		stats.health -= amount;
 		
-		if (health <= 0) {
+		if (stats.health <= 0) {
 			tutObj.SendMessage("EnemyDead");
 			KillEnemy();
 		}
