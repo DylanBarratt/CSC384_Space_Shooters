@@ -85,7 +85,7 @@ public static class SaveSystem {
 	}
 	
 	public static string GetSettingsPath() {
-		return Path.Combine(Application.persistentDataPath, TUTORIAL_PATH);
+		return Path.Combine(Application.persistentDataPath, SETTINGS_PATH);
 	}
 
 	public static void SaveSettings(bool showFps, bool ezMode) {

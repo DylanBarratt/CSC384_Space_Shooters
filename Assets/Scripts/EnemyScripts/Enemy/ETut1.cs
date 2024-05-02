@@ -8,12 +8,12 @@ public class ETut1 : MonoBehaviour {
 	[SerializeField] private GameObject tutObj;
 	
 	private bool initiated = false;
-	private EnemyData stats;
+	private EnemyData stats = new (5, 0, 0);
 	
 	private Animator anime;
 	
 	public void EnemyInit(EnemyData vals) {
-		stats = vals;
+		stats = new EnemyData(vals.health, vals.speed, vals.value);
 		
 		if (stats.speed != 0) {
 			gameObject.SendMessage("Move", stats.speed);
