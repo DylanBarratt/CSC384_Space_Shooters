@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-//script with help from: https://stuartspixelgames.com/2018/06/24/simple-2d-top-down-movement-unity-c/
 public class PlayerMovement : MonoBehaviour {
     private Rigidbody2D rb;
     private Animator anime;

@@ -202,6 +202,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65f391dfca162502290798ed02d10887, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyStats: {fileID: 11400000, guid: 7025e92f72ffdfdc5b9bd27039cf4283, type: 2}
 --- !u!95 &2959366610365648874
 Animator:
   serializedVersion: 5
@@ -456,6 +457,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65f391dfca162502290798ed02d10887, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyStats: {fileID: 11400000, guid: 7025e92f72ffdfdc5b9bd27039cf4283, type: 2}
 --- !u!95 &5698066368813479531
 Animator:
   serializedVersion: 5
@@ -710,6 +712,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65f391dfca162502290798ed02d10887, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyStats: {fileID: 11400000, guid: 7025e92f72ffdfdc5b9bd27039cf4283, type: 2}
 --- !u!95 &2890256321903726990
 Animator:
   serializedVersion: 5
@@ -964,6 +967,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65f391dfca162502290798ed02d10887, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyStats: {fileID: 11400000, guid: 7025e92f72ffdfdc5b9bd27039cf4283, type: 2}
 --- !u!95 &3700959339981729645
 Animator:
   serializedVersion: 5
@@ -1417,6 +1421,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65f391dfca162502290798ed02d10887, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyStats: {fileID: 11400000, guid: 7025e92f72ffdfdc5b9bd27039cf4283, type: 2}
 --- !u!95 &1436413294763855679
 Animator:
   serializedVersion: 5

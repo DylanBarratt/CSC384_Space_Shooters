@@ -14,27 +14,13 @@ public class EnemySpawner : MonoBehaviour {
 	private List<int> noEmptyNumEnemies;
 	private int[] numEnemies = new int[4];
 	private int enemiesAlive;
-	private int e4Count;
 	private int maxEnemies;
 
-
 	private LevelData lvlData;
-
-	private EnemyData[] enemyStats = {
-		new (3, 1.5f, 1),
-		new (5, 1f, 2),
-		new (2, 4f, 3),
-		new (3, 8, 4)
-	};
 
 	private Transform lastSpawnLoc;
 	
 	public void EnemyDestroyed(int eValue) { 
-		//felt like this was a weird (probably non-optimal) but slightly clever way of determining if the enemy killed was e4 :) - Dylan
-		if (eValue == enemyStats[3].value) { 
-			e4Count--;
-		}
-		
 		enemiesAlive--;
 	}
 
@@ -48,7 +34,6 @@ public class EnemySpawner : MonoBehaviour {
 		
 		lastSpawnLoc = spawnPoints[0];
 		enemiesAlive = 0;
-		e4Count = 0;
 		maxEnemies = 3;
 		
 		Spawn();
@@ -80,11 +65,7 @@ public class EnemySpawner : MonoBehaviour {
 		if (enemiesAlive >= maxEnemies) {
 			return false;
 		}
-
-		//enough 4s
-		if (index == 3 && e4Count >= 1) {
-			return false;
-		}
+		
 
 		//all index spawned
 		if (numEnemies[index] <= 0) {
@@ -112,15 +93,11 @@ public class EnemySpawner : MonoBehaviour {
 				
 		GameObject e = Instantiate(enemies[index], spawnLoc.position, enemies[index].transform.rotation);
 		
-		e.SendMessage("EnemyInit", enemyStats[index]);
+		e.SendMessage("EnemyInit");
 				
 		numEnemies[index]--;
 		
 		lastSpawnLoc = spawnLoc;
-		
-		if (index == 3) {
-			e4Count++;
-		}
 		
 		enemiesAlive++;
 	}

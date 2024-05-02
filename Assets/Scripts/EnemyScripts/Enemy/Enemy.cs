@@ -6,15 +6,17 @@ using UnityEngine;
 public class Enemy : MonoBehaviour {
 	private bool initiated;
 
-	private EnemyData stats;
+	[SerializeField] private EnemyType enemyStats;
+	private float health;
+	private void Start() {
+		health = enemyStats.health;
+	}
 
-	public void EnemyInit(EnemyData vals) {
-		stats = new EnemyData(vals.health, vals.speed, vals.value);
-
+	public void EnemyInit() {
 		//if not boss enemy
-		if (stats.speed != 0 && stats.value != 0) {
-			gameObject.SendMessage("Move", stats.speed);			
-			gameObject.SendMessage("SetValue", stats.value);
+		if (enemyStats.speed != 0 && enemyStats.value != 0) {
+			gameObject.SendMessage("Move", enemyStats.speed);			
+			gameObject.SendMessage("SetValue", enemyStats.value);
 		}
 
 		initiated = true;
@@ -36,9 +38,9 @@ public class Enemy : MonoBehaviour {
 	private void Damage(int amount) {
 		if (!initiated) return;
 
-		stats.health -= amount;
+		health -= amount;
 		
-		if (stats.health <= 0) {
+		if (health <= 0) {
 			gameObject.SendMessage("KillEnemy");
 		}
 	}

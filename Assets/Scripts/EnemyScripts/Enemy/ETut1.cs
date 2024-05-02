@@ -6,23 +6,25 @@ using UnityEngine;
 
 public class ETut1 : MonoBehaviour {
 	[SerializeField] private GameObject tutObj;
-	
+	[SerializeField] private EnemyType enemyStats;
+
 	private bool initiated = false;
-	private EnemyData stats = new (5, 0, 0);
 	
 	private Animator anime;
 	
-	public void EnemyInit(EnemyData vals) {
-		stats = new EnemyData(vals.health, vals.speed, vals.value);
-		
-		if (stats.speed != 0) {
-			gameObject.SendMessage("Move", stats.speed);
+	private float health;
+	
+	private void Start() {
+		Debug.Log(enemyStats.health);
+		health = enemyStats.health;
+		anime = GetComponent<Animator>();
+	}
+	
+	public void EnemyInit() {
+		if (enemyStats.speed != 0) {
+			gameObject.SendMessage("Move", enemyStats.speed);
 		}
 		initiated = true;
-	}
-
-	private void Start() {
-		anime = GetComponent<Animator>();
 	}
 
 	private void YReached() {
@@ -32,9 +34,9 @@ public class ETut1 : MonoBehaviour {
 	private void Damage(int amount) {
 		if (!initiated) return;
 
-		stats.health -= amount;
+		health -= amount;
 		
-		if (stats.health <= 0) {
+		if (health <= 0) {
 			tutObj.SendMessage("EnemyDead");
 			KillEnemy();
 		}

@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class BossOneMovement : MonoBehaviour {
 	[SerializeField] private GameObject[] minis;
-	
-	private EnemyData miniVals = new EnemyData(7, 0, 0);
 	private float bossSpeed = 1.5f;
 
 
@@ -15,7 +13,7 @@ public class BossOneMovement : MonoBehaviour {
 
 		foreach (GameObject mini in minis) {
 			mini.SendMessage("SetROF", 1f);
-			mini.SendMessage("EnemyInit", miniVals);
+			mini.SendMessage("EnemyInit");
 		}
 	}
 }

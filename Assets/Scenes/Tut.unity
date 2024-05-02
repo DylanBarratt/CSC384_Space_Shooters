@@ -545,6 +545,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tutObj: {fileID: 1239176204}
+  enemyStats: {fileID: 11400000, guid: 7025e92f72ffdfdc5b9bd27039cf4283, type: 2}
 --- !u!1 &536800752
 GameObject:
   m_ObjectHideFlags: 0
@@ -889,6 +890,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tutObj: {fileID: 1239176204}
+  enemyStats: {fileID: 11400000, guid: 7025e92f72ffdfdc5b9bd27039cf4283, type: 2}
 --- !u!1 &1016564943
 GameObject:
   m_ObjectHideFlags: 0
