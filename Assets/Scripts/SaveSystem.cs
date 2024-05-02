@@ -13,6 +13,7 @@ public static class SaveSystem {
 	}
 	
 	public static void SavePlayer(int h, float s, float rof) {
+		Debug.Log("Saving health: " + h);
 		FileStream stream = new FileStream(GetPlayerSavePath(), FileMode.Create);
 
 		PlayerData data = new PlayerData(h, s, rof);

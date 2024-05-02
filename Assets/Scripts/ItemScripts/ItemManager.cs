@@ -16,7 +16,7 @@ public class ItemManager : MonoBehaviour {
 	
 	private int loopMonies = 0;
 
-	private int[,] itemVals = new int [3, 3];
+	private ItemData[] itemVals = new ItemData[3];
 	private void Start() {
 		asteroidSpawner = GameObject.Find("GameManager/AsteroidSpawner");
 		player = GameObject.Find("Player");
@@ -25,16 +25,13 @@ public class ItemManager : MonoBehaviour {
 
 	private void SetItemVals(int lvl) {
 		//health
-		itemVals[0,0] =  20 * lvl; //cost
-		itemVals[0,1] =  1; //value
+		itemVals[0] = new ItemData(0,20, 1);
 		
 		//speed
-		itemVals[1,0] =  30 * lvl; //cost
-		itemVals[1,1] =  2; //value
+		itemVals[1] = new ItemData(1, 30, 2);
 		
 		//rof
-		itemVals[2,0] =  100 / lvl; //cost
-		itemVals[2,1] =  1; //value
+		itemVals[2] = new ItemData(2, 100 / lvl, 1);
 	}
 
 	private void OpenShop(int lvl) {
@@ -74,10 +71,10 @@ public class ItemManager : MonoBehaviour {
 
 	private void SpawnItems() {
 		GameObject instance;
-		for (int i = 0; i < 3; i++) {
+		for (int i = 0; i < itemVals.Length; i++) {
 			instance = Instantiate(prefabs[i]);
-			//id, cost, value
-			instance.SendMessage("InitItem", new [] {i, itemVals[i, 0], itemVals[i, 1]});  //TODO: should this be set based on level?
+			Debug.Log(itemVals[i].id);
+			instance.SendMessage("InitItem", itemVals[i]);  
 			items.Add(instance);
 		}
 
@@ -99,17 +96,14 @@ public class ItemManager : MonoBehaviour {
 		HUD.SendMessage("UpdateMonies", loopMonies);
 	}
 	
-	private void BuyItem(int[] vals) {
-		int itemID = vals[0];
-		int cost = vals[1];
-
-		if (cost > loopMonies) {
+	private void BuyItem(ItemData vals) {
+		if (vals.cost > loopMonies) {
 			Debug.Log("Poor");
 			return;
 		}
 
-		AddMonies(-cost);
+		AddMonies(-vals.cost);
 		
-		items[itemID].SendMessage("ActivateItem");
+		items[vals.id].SendMessage("ActivateItem");
 	}
 }

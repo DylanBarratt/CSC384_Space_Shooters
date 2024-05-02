@@ -93,7 +93,7 @@ public class Player : MonoBehaviour {
 	}
 
 	private void SavePlayerStats() {
-		SaveSystem.SavePlayer(health, speed, rateOfFire);
+		SaveSystem.SavePlayer(fullHealthAmnt, speed, rateOfFire);
 	}
 
 	private void DeletePlayerStats() {

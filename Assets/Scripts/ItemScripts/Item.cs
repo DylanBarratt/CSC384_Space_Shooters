@@ -7,18 +7,14 @@ public class Item : MonoBehaviour {
 	[SerializeField] private TextMeshPro priceText;
 	private GameObject gameManager;
 
-	private int itemID;
-	private int itemCost;
-	private int itemValue;
+	private ItemData data;
 
-	private void InitItem(int[] vals) {
-		itemID = vals[0];
-		itemCost = vals[1];
-		itemValue = vals[2];
+	private void InitItem(ItemData vals) {
+		data = new ItemData(vals.id, vals.cost, vals.value);
 		
-		gameObject.SendMessage("SetValue", itemValue);
+		gameObject.SendMessage("SetValue", data.value);
 		
-		priceText.SetText("$" + itemCost);
+		priceText.SetText("$" + data.cost);
 	}
 	
 	private void Start() {
@@ -27,7 +23,7 @@ public class Item : MonoBehaviour {
 
 	private void OnTriggerEnter2D(Collider2D coll) {
 		if (coll.gameObject.CompareTag("Player")) {
-			gameManager.SendMessage("BuyItem", new [] {itemID, itemCost});
+			gameManager.SendMessage("BuyItem", data);
 		}
 	}
 }

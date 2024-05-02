@@ -8,9 +8,9 @@ public class PlayerData  {
 	public float speed;
 	public float rateOfFire;
 
-	public PlayerData(int h, float s, float rof) {
-		health = h;
-		speed = s;
-		rateOfFire = rof;
+	public PlayerData(int health, float speed, float rateOfFire) {
+		this.health = health;
+		this.speed = speed;
+		this.rateOfFire = rateOfFire;
 	}
 }
