@@ -23,7 +23,7 @@ public class BossOne : MonoBehaviour {
 		SendMessage("UpdateHealthBar", new float[] {startingHealth, health});
 		
 		if (health == 0) {
-			SendMessage("Ded", value);
+			SendMessage("Ded", new int[] {0, value});
 		}
 	}
 

@@ -10,16 +10,14 @@ public class GameManager : MonoBehaviour {
     [SerializeField] private GameObject HUD;
     [SerializeField] private GameObject Starz;
     
-    private int lvlID;
+    private int currLvlID;
     
     private LevelData[] LEVEL_SPAWN_AMOUNTS;
     
     private void Start() {
-        lvlID = 0;
+        currLvlID = 0;
         
         SetSpawnAmounts();
-        
-        //TODO: check if tutorial has been done, if not load tut instead
         StartLevel();
     }
 
@@ -31,7 +29,7 @@ public class GameManager : MonoBehaviour {
                 new (0,  2f, 5, 3, 0, 0),
                 new (1,  1.5f, 3, 5, 3, 0),
                 new (2,  1f, 3, 3, 7, 0),
-                new (3,  0.5f, 3, 3, 5, 3),
+                //new (3,  0.5f, 3, 3, 5, 3), lvl4?
             };
         } else { //easy
             Debug.Log("EASY MODE NOOOOOB");
@@ -39,17 +37,15 @@ public class GameManager : MonoBehaviour {
                 new (0,  1, 1, 1, 0, 0 ), 
                 new (1,  1, 0, 1, 1, 0 ), 
                 new (2,  1, 1, 1, 1, 0 ), 
-                new (3,  1, 1, 1, 1, 1 ), 
+                //new (3,  1, 1, 1, 1, 1 ), lvl4?
             };
         }
     }
     
     private void NextLevel() {
-        lvlID++;
-        Debug.Log("Moving to level " + lvlID);
-        Debug.Log(LEVEL_SPAWN_AMOUNTS.Length);
+        currLvlID++;
 		
-        if (lvlID == LEVEL_SPAWN_AMOUNTS.Length) {
+        if (currLvlID == LEVEL_SPAWN_AMOUNTS.Length) {
             EndGame();
             return;
         }
@@ -58,10 +54,10 @@ public class GameManager : MonoBehaviour {
     }
 
     private void StartLevel() {
-        LevelData curLvl = LEVEL_SPAWN_AMOUNTS[lvlID];
+        LevelData curLvl = LEVEL_SPAWN_AMOUNTS[currLvlID];
         
         EnemySpawner.SendMessage("EnemySpawnInit", curLvl);
-        Starz.SendMessage("SetSpeed", ((float)lvlID / 2 + 1) / 10);
+        Starz.SendMessage("SetSpeed", ((float)currLvlID / 2 + 1) / 10);
     }
 
     private void EndGame() {

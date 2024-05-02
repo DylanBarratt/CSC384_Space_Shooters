@@ -40,7 +40,7 @@ public class BossTwo : MonoBehaviour {
 		SendMessage("UpdateHealthBar", new float[] {startingHealth, health});
 
 		if (health <= 0) {
-			SendMessage("Ded", value);
+			SendMessage("Ded", new int[] {1, value});
 		}
 		
 	}

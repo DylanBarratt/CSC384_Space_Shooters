@@ -38,7 +38,7 @@ public class ItemManager : MonoBehaviour {
 	}
 
 	private void OpenShop(int lvl) {
-		SetItemVals(lvl);
+		SetItemVals(lvl + 1);
 		
 		
 		items = new List<GameObject>();

@@ -46,6 +46,19 @@ public class AsteroidSpawner : MonoBehaviour {
 		if (shouldSpawn) {
 			SpawnAsteroids();
 		}
+		else {
+			DestroyAllAsteroids();
+		}
+	}
+
+	private void DestroyAllAsteroids() {
+		GameObject[] asteroids = GameObject.FindGameObjectsWithTag("Asteroid");
+
+		// Loop through each asteroid and destroy it
+		foreach (GameObject asteroid in asteroids)
+		{
+			asteroid.SendMessage("KillAsteroid", false);
+		}
 	}
 
 	//TODO: FOR TESTING ONLY!!

@@ -16,7 +16,8 @@ public class Boss : MonoBehaviour {
 		asteroidSpawner.SendMessage("CanSpawn", false);
 	}
 	
-	private void Ded(int value) {
+	//lvl, value
+	private void Ded(int[] vals) {
 		UIGameObject.SendMessage("DisplayBossBar", false);
 		
 		Destroy(GetComponent<BoxCollider2D>());
@@ -25,9 +26,9 @@ public class Boss : MonoBehaviour {
 		Component[] allComponents = GetComponents(typeof(MonoBehaviour));
 		foreach (Component gameObjectComponent in allComponents) Destroy((MonoBehaviour)gameObjectComponent);
 		
-		gameManager.SendMessage("AddMonies", value);
+		gameManager.SendMessage("AddMonies", vals[1]);
 		
-		gameManager.SendMessage("OpenShop", 1);
+		gameManager.SendMessage("OpenShop", vals[0]);
 		Destroy(gameObject);
 	}
 	

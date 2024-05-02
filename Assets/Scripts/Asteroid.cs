@@ -33,7 +33,7 @@ public class Asteroid : MonoBehaviour {
                 KillAsteroid(true);
                 break;
             case "Boundary":
-                Invoke(nameof(KillAsteroid), 2f); 
+                Invoke(nameof(DestroyOnBoundary), 2f); 
                 break;
         }
     }
@@ -53,13 +53,17 @@ public class Asteroid : MonoBehaviour {
         rb.velocity = Vector2.down * fallingSpeed;
     }
     
-    private void KillAsteroid() {
+    private void DestroyOnBoundary() {
         Destroy(gameObject);
     }
     
+    //with bool does animation
     private void KillAsteroid(bool player) {
         DedAnime();
-        gameManager.SendMessage("AddMonies", moniesValue);
+
+        if (player) {
+            gameManager.SendMessage("AddMonies", moniesValue);
+        }
     }
 
     private void DedAnime() {
