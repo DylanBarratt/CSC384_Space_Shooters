@@ -16,7 +16,6 @@ GameObject:
   - component: {fileID: 4991931881360263358}
   - component: {fileID: 3508744593202541797}
   - component: {fileID: 9178513053701078868}
-  - component: {fileID: 6608376082897387361}
   m_Layer: 0
   m_Name: B2
   m_TagString: Enemy
@@ -233,18 +232,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gunLoc: {fileID: 1779491301442715764}
   bulletPrefab: {fileID: 8654673310026028745, guid: 57221826ceb229297ae4452fb7abf523, type: 3}
---- !u!114 &6608376082897387361
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 620565205780158854}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5911b71d0e9dcd91cbae7f48edad75fc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &2894169890228223506
 GameObject:
   m_ObjectHideFlags: 0

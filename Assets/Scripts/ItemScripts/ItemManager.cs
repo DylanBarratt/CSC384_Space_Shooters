@@ -73,7 +73,6 @@ public class ItemManager : MonoBehaviour {
 		GameObject instance;
 		for (int i = 0; i < itemVals.Length; i++) {
 			instance = Instantiate(prefabs[i]);
-			Debug.Log(itemVals[i].id);
 			instance.SendMessage("InitItem", itemVals[i]);  
 			items.Add(instance);
 		}

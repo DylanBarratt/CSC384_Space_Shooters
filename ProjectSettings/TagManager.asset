@@ -12,6 +12,7 @@ TagManager:
   - UBoundary
   - SBoundary
   - Item
+  - B3
   layers:
   - Default
   - TransparentFX

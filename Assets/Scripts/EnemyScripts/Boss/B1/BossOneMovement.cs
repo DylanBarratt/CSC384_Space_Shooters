@@ -10,6 +10,7 @@ public class BossOneMovement : MonoBehaviour {
 
 
 	private void YReachedInit() {
+		SendMessage("UpdateHealthBar", new float[] {1, 1}); //just init as full
 		SendMessage("SetBossSpeed", bossSpeed); //boss one initial speed
 
 		foreach (GameObject mini in minis) {

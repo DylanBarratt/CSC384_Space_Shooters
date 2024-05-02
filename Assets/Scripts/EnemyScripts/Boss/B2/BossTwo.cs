@@ -5,7 +5,7 @@ using UnityEngine;
 public class BossTwo : MonoBehaviour {
 	private int value = 30;
 	private float health = 50;
-	// private float health = 1; //TODO: dlete dev halp
+	private float shootDelay = 1f;
 	private float startingHealth;
 
 	private bool initiated;
@@ -14,12 +14,14 @@ public class BossTwo : MonoBehaviour {
 	private void Start() {
 		initiated = false;
 		startingHealth = health;
-		
-		SendMessage("UpdateHealthBar", new float[] {startingHealth, health});
 	}
 
 	private void YReachedInit(float speed) {
 		initiated = true;
+		
+		Invoke(nameof(ShootLoop), shootDelay);
+		
+		SendMessage("UpdateHealthBar", new float[] {startingHealth, health});
 	}
 	
 	private void OnTriggerEnter2D(Collider2D collision) {
@@ -42,6 +44,11 @@ public class BossTwo : MonoBehaviour {
 		if (health <= 0) {
 			SendMessage("Ded", new int[] {1, value});
 		}
-		
+	}
+	
+	private void ShootLoop() {
+		CancelInvoke();
+		SendMessage("Shoot");
+		Invoke(nameof(ShootLoop), shootDelay);
 	}
 }
