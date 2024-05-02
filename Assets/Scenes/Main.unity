@@ -291,9 +291,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bosses:
-  - {fileID: 1468421477487809394, guid: e0af4415f885da814a18cf7fa4065b0a, type: 3}
   - {fileID: 4415700656985320365, guid: 8ac4f4528dc97dc67817d8172273952e, type: 3}
   - {fileID: 620565205780158854, guid: 47bf06fc25c6be3229968d622b1715fe, type: 3}
+  - {fileID: 1468421477487809394, guid: e0af4415f885da814a18cf7fa4065b0a, type: 3}
 --- !u!1 &456561017
 GameObject:
   m_ObjectHideFlags: 0

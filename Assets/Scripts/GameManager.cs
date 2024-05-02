@@ -61,8 +61,8 @@ public class GameManager : MonoBehaviour {
     }
 
     private void EndGame() {
-        //TODO: maybe save stats here?
-        Debug.Log("GGs bro"); //TODO: implement end game here
+        Debug.Log("Wow nice 1");
+        SaveSystem.SaveWin();
         SceneManager.LoadScene("Menu");
     }
 }

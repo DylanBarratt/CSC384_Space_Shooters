@@ -59,5 +59,8 @@ public class Settings : MonoBehaviour {
 	private void DeleteSave() {
 		SaveSystem.DeletePlayer();
 		Debug.Log("Player deleted!");
+		
+		SaveSystem.ZeroWins();
+		Debug.Log("Save deleted!");
 	}
 }

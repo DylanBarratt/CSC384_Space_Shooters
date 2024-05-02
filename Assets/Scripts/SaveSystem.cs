@@ -7,6 +7,7 @@ public static class SaveSystem {
 	private const string PLAYER_PATH = "player.data";
 	private const string TUTORIAL_PATH = "tut.data";
 	private const string SETTINGS_PATH = "settings.data";
+	private const string WINS_PATH = "wins.data";
 
 	public static string GetPlayerSavePath() {
 		return Path.Combine(Application.persistentDataPath, PLAYER_PATH);
@@ -118,5 +119,60 @@ public static class SaveSystem {
 		}
 		
 		return data;
+	}
+	
+	public static string GetWinsSavePath() {
+		return Path.Combine(Application.persistentDataPath, WINS_PATH);
+	}
+
+	public static void ZeroWins() {
+		FileStream stream = new FileStream(GetWinsSavePath(), FileMode.Create);
+
+		WinsData data = new WinsData(0);
+		
+		BinaryFormatter formatter = new BinaryFormatter();
+		formatter.Serialize(stream, data);
+		stream.Close();
+	}
+
+	public static void SaveWin() {
+		string path = GetWinsSavePath();
+		
+		if (!File.Exists(path)) {
+			Debug.LogError("Wins file does not exist: " + path);
+			ZeroWins();
+			return;
+		}
+		
+		int numWins = GetNumWins();
+		
+		FileStream stream = new FileStream(path, FileMode.Create);
+		WinsData data = new WinsData(numWins + 1);
+		
+		BinaryFormatter formatter = new BinaryFormatter();
+		formatter.Serialize(stream, data);
+		stream.Close();
+	}
+
+	public static int GetNumWins() {
+		string path = GetWinsSavePath();
+
+		if (!File.Exists(path)) {
+			Debug.LogError("Wins file does not exist: " + path);
+			ZeroWins();
+			return 0;
+		}
+		
+		FileStream stream = new FileStream(path, FileMode.Open);
+		
+		BinaryFormatter formatter = new BinaryFormatter();
+		WinsData data = formatter.Deserialize(stream) as WinsData;
+		stream.Close();
+
+		if (data == null) {
+			return 0;
+		}
+		
+		return data.numWins;
 	}
 }
