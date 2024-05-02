@@ -25,7 +25,7 @@ public class Player : MonoBehaviour {
 
 	private void Start() {
 		gameManager = GameObject.Find("GameManager");
-		UIGameObject = GameObject.Find("GameManager/HUD_UI");
+		UIGameObject = GameObject.Find("HUD_UI");
 		anime = GetComponent<Animator>();
 		pl = GetComponent<PlayerMovement>();
 		
