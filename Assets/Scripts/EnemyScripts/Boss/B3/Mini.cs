@@ -7,7 +7,7 @@ public class Mini : MonoBehaviour {
 	private GameObject UIGameObject, mainBoss;
 
 	private void Start() {
-		UIGameObject = GameObject.Find("GameManager/HUD_UI");
+		UIGameObject = GameObject.Find("HUD_UI");
 		mainBoss = GameObject.FindGameObjectWithTag("B3");
 	}
 	

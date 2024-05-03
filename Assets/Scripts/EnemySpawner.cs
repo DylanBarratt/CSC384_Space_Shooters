@@ -93,7 +93,7 @@ public class EnemySpawner : MonoBehaviour {
 				
 		GameObject e = Instantiate(enemies[index], spawnLoc.position, enemies[index].transform.rotation);
 		
-		e.SendMessage("EnemyInit");
+		e.SendMessage("EnemyInit", false);
 				
 		numEnemies[index]--;
 		

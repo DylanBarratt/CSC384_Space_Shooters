@@ -42,9 +42,6 @@ public class Tutorial : MonoBehaviour {
 
 	private void SideToSide() {
 		sideToSideStage = true;
-		player.SendMessage("ToggleHorizontal", true);
-		
-		player.SendMessage("ToggleVertical", false);
 		player.SendMessage("SetCanShoot", false);
 		
 		tutUi.SendMessage("DispSideToSide", true);
@@ -52,8 +49,6 @@ public class Tutorial : MonoBehaviour {
 
 	private void UpDown() {
 		upDownStage = true;
-		
-		player.SendMessage("ToggleVertical", true);
 		
 		tutUi.SendMessage("DispSideToSide", false);
 		tutUi.SendMessage("DispUpDown", true);
@@ -82,7 +77,7 @@ public class Tutorial : MonoBehaviour {
 		} else if (deadCount == 2) {
 			SaveSystem.SetTutorialComplete(true);
 			Debug.Log(SaveSystem.IsTutorialComplete());
-			SceneManager.LoadScene("Menu");
+			SceneManager.LoadScene("Main");
 		}
 	}
 
@@ -94,6 +89,6 @@ public class Tutorial : MonoBehaviour {
 	private void RealEnemy() {
 		GameObject eObj = Instantiate(e2);
 		eObj.SetActive(true);
-		eObj.SendMessage("EnemyInit");
+		eObj.SendMessage("EnemyInit", false);
 	}
 } 

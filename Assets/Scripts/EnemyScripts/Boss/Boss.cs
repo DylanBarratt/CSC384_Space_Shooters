@@ -10,16 +10,22 @@ public class Boss : MonoBehaviour {
 
 	private void Start() {
 		gameManager = GameObject.Find("GameManager");
-		UIGameObject = GameObject.Find("GameManager/HUD_UI");
+		UIGameObject = GameObject.Find("HUD_UI");
 		asteroidSpawner = GameObject.Find("GameManager/AsteroidSpawner");
 
 		asteroidSpawner.SendMessage("CanSpawn", false);
 	}
 	
+	private int[] vals;
 	//lvl, value
 	private void Ded(int[] vals) {
+		this.vals = vals;
 		UIGameObject.SendMessage("DisplayBossBar", false);
 		
+		Invoke(nameof(Next), 1.5f);
+	}
+
+	private void Next() {
 		Destroy(GetComponent<BoxCollider2D>());
 		Destroy(GetComponent<Rigidbody2D>());
 		

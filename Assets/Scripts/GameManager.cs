@@ -45,7 +45,7 @@ public class GameManager : MonoBehaviour {
     private void NextLevel() {
         currLvlID++;
 		
-        if (currLvlID == LEVEL_SPAWN_AMOUNTS.Length) {
+        if (currLvlID >= LEVEL_SPAWN_AMOUNTS.Length) {
             EndGame();
             return;
         }
@@ -61,7 +61,7 @@ public class GameManager : MonoBehaviour {
     }
 
     private void EndGame() {
-        Debug.Log("Wow nice 1");
+        Debug.Log(currLvlID);
         SaveSystem.SaveWin();
         SceneManager.LoadScene("Menu");
     }

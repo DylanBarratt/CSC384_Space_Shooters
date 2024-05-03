@@ -30,6 +30,7 @@ public class Player : MonoBehaviour {
 		pl = GetComponent<PlayerMovement>();
 		
 		LoadPlayerStats();
+		UpdateHealth();
 	}
 
 	private void LoadPlayerStats() {

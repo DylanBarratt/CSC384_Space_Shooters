@@ -9,6 +9,7 @@
 .unity-progress-bar__container {
     min-height: 18px;
     height: 18px;
+    width: 100%;
 }
 
 .unity-progress-bar__background {

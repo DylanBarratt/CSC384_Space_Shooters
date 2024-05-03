@@ -12,9 +12,9 @@ public class Enemy : MonoBehaviour {
 		health = enemyStats.health;
 	}
 
-	public void EnemyInit() {
+	public void EnemyInit(bool boss) {
 		//if not boss enemy
-		if (enemyStats.speed != 0 && enemyStats.value != 0) {
+		if (!boss) {
 			gameObject.SendMessage("Move", enemyStats.speed);			
 			gameObject.SendMessage("SetValue", enemyStats.value);
 		}

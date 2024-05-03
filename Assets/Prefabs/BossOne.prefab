@@ -184,7 +184,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 318440979689760178}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e8df6311ea4d92df39626e36348a9955, type: 3}
   m_Name: 
@@ -197,12 +197,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 318440979689760178}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 65f391dfca162502290798ed02d10887, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyStats: {fileID: 11400000, guid: 7025e92f72ffdfdc5b9bd27039cf4283, type: 2}
+  enemyStats: {fileID: 11400000, guid: 4aee314720e49ae4881b67bdd668056c, type: 2}
 --- !u!95 &2959366610365648874
 Animator:
   serializedVersion: 5
@@ -439,7 +439,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1331914351621496751}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e8df6311ea4d92df39626e36348a9955, type: 3}
   m_Name: 
@@ -452,12 +452,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1331914351621496751}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 65f391dfca162502290798ed02d10887, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyStats: {fileID: 11400000, guid: 7025e92f72ffdfdc5b9bd27039cf4283, type: 2}
+  enemyStats: {fileID: 11400000, guid: 4aee314720e49ae4881b67bdd668056c, type: 2}
 --- !u!95 &5698066368813479531
 Animator:
   serializedVersion: 5
@@ -694,7 +694,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1716934396707924437}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e8df6311ea4d92df39626e36348a9955, type: 3}
   m_Name: 
@@ -707,12 +707,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1716934396707924437}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 65f391dfca162502290798ed02d10887, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyStats: {fileID: 11400000, guid: 7025e92f72ffdfdc5b9bd27039cf4283, type: 2}
+  enemyStats: {fileID: 11400000, guid: 4aee314720e49ae4881b67bdd668056c, type: 2}
 --- !u!95 &2890256321903726990
 Animator:
   serializedVersion: 5
@@ -949,7 +949,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3907870558318315031}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e8df6311ea4d92df39626e36348a9955, type: 3}
   m_Name: 
@@ -962,12 +962,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3907870558318315031}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 65f391dfca162502290798ed02d10887, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyStats: {fileID: 11400000, guid: 7025e92f72ffdfdc5b9bd27039cf4283, type: 2}
+  enemyStats: {fileID: 11400000, guid: 4aee314720e49ae4881b67bdd668056c, type: 2}
 --- !u!95 &3700959339981729645
 Animator:
   serializedVersion: 5
@@ -1403,7 +1403,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8528877245315591922}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e8df6311ea4d92df39626e36348a9955, type: 3}
   m_Name: 
@@ -1416,12 +1416,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8528877245315591922}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 65f391dfca162502290798ed02d10887, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyStats: {fileID: 11400000, guid: 7025e92f72ffdfdc5b9bd27039cf4283, type: 2}
+  enemyStats: {fileID: 11400000, guid: 4aee314720e49ae4881b67bdd668056c, type: 2}
 --- !u!95 &1436413294763855679
 Animator:
   serializedVersion: 5

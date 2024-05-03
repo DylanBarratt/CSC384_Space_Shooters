@@ -24,6 +24,7 @@ public class MainMenuUI : MonoBehaviour {
 	}
 
 	private void StartGame() {
+Debug.Log(SaveSystem.IsTutorialComplete());
 		if (SaveSystem.IsTutorialComplete()) {
 			ChangeScene("Main");
 		} else {

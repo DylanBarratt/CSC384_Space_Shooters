@@ -9,7 +9,7 @@ public class EnemyTwoMovement : MonoBehaviour {
     
     private float speed;
     
-    private float moveDuration = 3f;
+    private float moveDuration = 1.5f;
     
 
     private void Start() {

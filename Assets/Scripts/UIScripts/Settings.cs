@@ -62,5 +62,8 @@ public class Settings : MonoBehaviour {
 		
 		SaveSystem.ZeroWins();
 		Debug.Log("Save deleted!");
+
+		SaveSystem.SetTutorialComplete(false);
+		Debug.Log("Tutorial deleted!");
 	}
 }
