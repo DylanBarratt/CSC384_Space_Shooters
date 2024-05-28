@@ -5,6 +5,7 @@ Throughout the development process, I implemented key game design patterns essen
 The artwork was kindly drawn by Arianne Barratt :3. <br />
 
 ## Demo  
+_This video was used to submit for assessment so demonstrates different features of the game_
 https://github.com/DylanBarratt/CSC384/assets/52459348/0de008aa-ccb6-44b1-8b9a-2eecbacf0fb9
 
 ## Playing the Game
