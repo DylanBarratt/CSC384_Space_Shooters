@@ -6,3 +6,7 @@ Throughout the development process, I implemented key game design patterns essen
 The artwork was kindly drawn by Arianne Barratt :3. <br />
 
 ## Demo  
+
+
+## Playing the Game
+The game can be run on Windows machines by running the _.exe_ in the [builds](/Builds) folder. The full source can also be loaded into the Unity editor and rebuilt or edited.
